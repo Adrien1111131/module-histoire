@@ -108,7 +108,10 @@ const StoryResult = ({ userProfile }) => {
             const formattedText = paragraph
               .replace(/\[([^\]]+)\]/g, '<span class="text-blue-600 opacity-50">[$1]</span>')
               .replace(/\[\/([^\]]+)\]/g, '<span class="text-blue-600 opacity-50">[/$1]</span>')
-              .replace(/\(\.\.\.\)/g, '<span class="text-gray-400">(...)</span>');
+              .replace(/\(\.\.\.\)/g, '<span class="text-gray-400">(...)</span>')
+              .replace(/\.\.\.\.\./g, '<span class="text-gray-400">.....</span>')
+              .replace(/\.\.\./g, '<span class="text-gray-400">...</span>')
+              .replace(/;/g, '<span class="text-gray-400">;</span>');
 
             return (
               <p 
@@ -129,8 +132,10 @@ const StoryResult = ({ userProfile }) => {
             <div><span className="text-blue-600">[murmure]</span> - ton doux et intime</div>
             <div><span className="text-blue-600">[intense]</span> - ton intense et profond</div>
             <div><span className="text-blue-600">[doux]</span> - ton tendre et délicat</div>
-            <div className="col-span-2">
-              <span className="text-gray-400">(...)</span> - pause naturelle
+            <div className="col-span-2 space-y-1">
+              <div><span className="text-gray-400">;</span> - micro-pause entre actions</div>
+              <div><span className="text-gray-400">...</span> - pause naturelle</div>
+              <div><span className="text-gray-400">.....</span> - pause intense/dramatique</div>
             </div>
           </div>
         </div>

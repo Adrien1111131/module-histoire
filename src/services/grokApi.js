@@ -59,11 +59,44 @@ export const generateStory = async (userProfile) => {
         6. Garde un ton chaleureux et vivant
 
         PHONÉTISATION ET RYTHME (TTS) :
-        - Intègre des sons de respiration ou de soupir pour l'immersion : "ahhh...", "mmmh...", "ohh...", "haaah...", "ouiii...", "hh...", "nhh...", "hah...", "aah..."
-        - Utilise les points de suspension "..." pour ralentir la lecture et créer un effet haletant (le TTS marque une pause sur les ...).
-        - Varie la casse pour simuler le crescendo : commence en minuscules ("ahhh... ahhh...") puis monte en majuscules ("AHHH... OUIII...", "OHHHH !") pour accentuer le climax.
-        - Structure les phrases pour créer de la tension, avec des hésitations et des cassures : "je... je peux plus... ahhh... mmh... je vais... j'vais jouir… AHH... OUIIII…"
-        - Imite un style de narration basse, réaliste et immersive, comme un murmure ou un souffle proche de l'oreille.
+        
+        SONS ET RESPIRATIONS :
+        1. Scènes douces/tendres :
+           - Sons doux : "mmh...", "aah...", "hnn..."
+           - Respirations légères : "hh...", "ahh..."
+           - Soupirs délicats : "haah...", "mmm..."
+        
+        2. Scènes passionnées :
+           - Sons intenses : "AAHH.....", "OHHH.....", "OUIII....."
+           - Respirations profondes : "haaah.....", "oooh....."
+           - Gémissements : "mmmh.....", "nngh....."
+        
+        3. Scènes dominantes :
+           - Contrastes : "ah... AH..... oui!"
+           - Commandes : "Oui..... comme ça!"
+           - Réactions : "nngh..... OUI!"
+        
+        UTILISATION DES PAUSES SELON LE CONTEXTE :
+        1. Points-virgules (;) pour :
+           - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
+           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
+           - Montée en intensité : "plus fort; plus vite; je vais..."
+        
+        2. Points de suspension (...) pour :
+           - Moments tendres : "je t'embrasse... doucement..."
+           - Transitions : "je sens que... oui... là..."
+           - Anticipation : "continue... encore... comme ça..."
+        
+        3. Cinq points de suspension (.....):
+           - Moments intenses : "je vais..... OUIII!"
+           - Pauses dramatiques : "je m'approche..... et te domine"
+           - Extase : "je jouis..... AHHH....."
+        
+        ADAPTATION À LA PROGRESSION :
+        - Début : sons doux, pauses longues (...), peu de majuscules
+        - Montée : mélange de (...) et (;), intensité progressive
+        - Climax : (.....),  MAJUSCULES, sons intenses
+        - Résolution : retour aux (...), sons apaisés
 
         EXEMPLE DE STYLE (à suivre et à enrichir) :
         [doux]Mmh… t'es si bonne… je peux pas… ahhh… je vais craquer… c'est trop bon… continue… continue comme ça… oh putain… je… je jouis… ahhh… AHHH… ouiii… OHHHH ![/doux]
@@ -262,11 +295,44 @@ export const generateRandomStory = async (randomStoryData) => {
         6. Termine avec [doux] pour la descente émotionnelle
 
         PHONÉTISATION ET RYTHME (TTS) :
-        - Intègre des sons de respiration ou de soupir pour l'immersion : "ahhh...", "mmmh...", "ohh...", "haaah...", "ouiii...", "hh...", "nhh...", "hah...", "aah..."
-        - Utilise les points de suspension "..." pour ralentir la lecture et créer un effet haletant (le TTS marque une pause sur les ...).
-        - Varie la casse pour simuler le crescendo : commence en minuscules ("ahhh... ahhh...") puis monte en majuscules ("AHHH... OUIII...", "OHHHH !") pour accentuer le climax.
-        - Structure les phrases pour créer de la tension, avec des hésitations et des cassures : "je... je peux plus... ahhh... mmh... je vais... j'vais jouir… AHH... OUIIII…"
-        - Imite un style de narration basse, réaliste et immersive, comme un murmure ou un souffle proche de l'oreille.
+        
+        SONS ET RESPIRATIONS :
+        1. Scènes douces/tendres :
+           - Sons doux : "mmh...", "aah...", "hnn..."
+           - Respirations légères : "hh...", "ahh..."
+           - Soupirs délicats : "haah...", "mmm..."
+        
+        2. Scènes passionnées :
+           - Sons intenses : "AAHH.....", "OHHH.....", "OUIII....."
+           - Respirations profondes : "haaah.....", "oooh....."
+           - Gémissements : "mmmh.....", "nngh....."
+        
+        3. Scènes dominantes :
+           - Contrastes : "ah... AH..... oui!"
+           - Commandes : "Oui..... comme ça!"
+           - Réactions : "nngh..... OUI!"
+        
+        UTILISATION DES PAUSES SELON LE CONTEXTE :
+        1. Points-virgules (;) pour :
+           - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
+           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
+           - Montée en intensité : "plus fort; plus vite; je vais..."
+        
+        2. Points de suspension (...) pour :
+           - Moments tendres : "je t'embrasse... doucement..."
+           - Transitions : "je sens que... oui... là..."
+           - Anticipation : "continue... encore... comme ça..."
+        
+        3. Cinq points de suspension (.....):
+           - Moments intenses : "je vais..... OUIII!"
+           - Pauses dramatiques : "je m'approche..... et te domine"
+           - Extase : "je jouis..... AHHH....."
+        
+        ADAPTATION À LA PROGRESSION :
+        - Début : sons doux, pauses longues (...), peu de majuscules
+        - Montée : mélange de (...) et (;), intensité progressive
+        - Climax : (.....),  MAJUSCULES, sons intenses
+        - Résolution : retour aux (...), sons apaisés
 
         EXEMPLE DE STYLE (à suivre et à enrichir) :
         [doux]Mmh… t'es si bonne… je peux pas… ahhh… je vais craquer… c'est trop bon… continue… continue comme ça… oh putain… je… je jouis… ahhh… AHHH… ouiii… OHHHH ![/doux]
