@@ -61,22 +61,25 @@ export const generateStory = async (userProfile) => {
         PHONÉTISATION ET RYTHME (TTS) :
         
         SONS ET RESPIRATIONS :
-        1. Scènes douces/tendres :
-           - Sons doux : "mmh...", "aah...", "hnn..."
-           - Respirations légères : "hh...", "ahh..."
-           - Soupirs délicats : "haah...", "mmm..."
+        1. RESPIRATIONS :
+           - Régulière : "hhhhhhhh..."
+           - Avec emphase : "Hhhhhhhh..."
+           - Forte puis décroissante : "HHhhhhhh!"
+           - Avec intensité variable : "hhhHHHhh~"
         
-        2. Scènes passionnées :
-           - Sons intenses : "AAHH.....", "OHHH.....", "OUIII....."
-           - Respirations profondes : "haaah.....", "oooh....."
-           - Gémissements : "mmmh.....", "nngh....."
+        2. BRUITS D'EXTASE :
+           - Sons doux : "mmh...", "Mmmh..."
+           - Sons moyens : "MMmh!", "OoOui!"
+           - Sons intenses : "OOOuiii!", "AaAaH!"
+           - Respirations intenses : "HHHHhhhh!"
         
-        3. Scènes dominantes :
-           - Contrastes : "ah... AH..... oui!"
-           - Commandes : "Oui..... comme ça!"
-           - Réactions : "nngh..... OUI!"
+        3. PROGRESSION D'INTENSITÉ :
+           - Début : "mmh... hhhhhhhh..."
+           - Montée : "Mmmh... Hhhhhhhh..."
+           - Intensification : "MMmh! HHhhhhhh!"
+           - Climax : "OOOuiii! HHHHhhhh!"
         
-        UTILISATION DES PAUSES SELON LE CONTEXTE :
+        PONCTUATION ET RYTHME :
         1. Points-virgules (;) pour :
            - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
            - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
@@ -86,11 +89,23 @@ export const generateStory = async (userProfile) => {
            - Moments tendres : "je t'embrasse... doucement..."
            - Transitions : "je sens que... oui... là..."
            - Anticipation : "continue... encore... comme ça..."
+           - Respirations : "hhhhhhhh... Hhhhhhhh..."
         
-        3. Cinq points de suspension (.....):
-           - Moments intenses : "je vais..... OUIII!"
-           - Pauses dramatiques : "je m'approche..... et te domine"
-           - Extase : "je jouis..... AHHH....."
+        3. Points d'exclamation (!) pour :
+           - Moments intenses : "MMmh!"
+           - Extase : "OOOuiii!"
+           - Respirations fortes : "HHhhhhhh!"
+        
+        4. Tilde (~) pour :
+           - Vibrations vocales : "mmmh~"
+           - Sons prolongés : "OOOuiii~"
+           - Respirations vibrantes : "HHhhhhhh~"
+        
+        5. Combinaisons pour effets spéciaux :
+           - Crescendo : "mmh... Mmmh... MMmh!"
+           - Vagues de plaisir : "OoOui~..."
+           - Respiration intense : "HHhhhhhh!..."
+           - Extase maximale : "OOOuiii~!"
         
         ADAPTATION À LA PROGRESSION :
         - Début : sons doux, pauses longues (...), peu de majuscules
@@ -297,22 +312,25 @@ export const generateRandomStory = async (randomStoryData) => {
         PHONÉTISATION ET RYTHME (TTS) :
         
         SONS ET RESPIRATIONS :
-        1. Scènes douces/tendres :
-           - Sons doux : "mmh...", "aah...", "hnn..."
-           - Respirations légères : "hh...", "ahh..."
-           - Soupirs délicats : "haah...", "mmm..."
+        1. RESPIRATIONS :
+           - Régulière : "hhhhhhhh..."
+           - Avec emphase : "Hhhhhhhh..."
+           - Forte puis décroissante : "HHhhhhhh!"
+           - Avec intensité variable : "hhhHHHhh~"
         
-        2. Scènes passionnées :
-           - Sons intenses : "AAHH.....", "OHHH.....", "OUIII....."
-           - Respirations profondes : "haaah.....", "oooh....."
-           - Gémissements : "mmmh.....", "nngh....."
+        2. BRUITS D'EXTASE :
+           - Sons doux : "mmh...", "Mmmh..."
+           - Sons moyens : "MMmh!", "OoOui!"
+           - Sons intenses : "OOOuiii!", "AaAaH!"
+           - Respirations intenses : "HHHHhhhh!"
         
-        3. Scènes dominantes :
-           - Contrastes : "ah... AH..... oui!"
-           - Commandes : "Oui..... comme ça!"
-           - Réactions : "nngh..... OUI!"
+        3. PROGRESSION D'INTENSITÉ :
+           - Début : "mmh... hhhhhhhh..."
+           - Montée : "Mmmh... Hhhhhhhh..."
+           - Intensification : "MMmh! HHhhhhhh!"
+           - Climax : "OOOuiii! HHHHhhhh!"
         
-        UTILISATION DES PAUSES SELON LE CONTEXTE :
+        PONCTUATION ET RYTHME :
         1. Points-virgules (;) pour :
            - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
            - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
@@ -322,11 +340,23 @@ export const generateRandomStory = async (randomStoryData) => {
            - Moments tendres : "je t'embrasse... doucement..."
            - Transitions : "je sens que... oui... là..."
            - Anticipation : "continue... encore... comme ça..."
+           - Respirations : "hhhhhhhh... Hhhhhhhh..."
         
-        3. Cinq points de suspension (.....):
-           - Moments intenses : "je vais..... OUIII!"
-           - Pauses dramatiques : "je m'approche..... et te domine"
-           - Extase : "je jouis..... AHHH....."
+        3. Points d'exclamation (!) pour :
+           - Moments intenses : "MMmh!"
+           - Extase : "OOOuiii!"
+           - Respirations fortes : "HHhhhhhh!"
+        
+        4. Tilde (~) pour :
+           - Vibrations vocales : "mmmh~"
+           - Sons prolongés : "OOOuiii~"
+           - Respirations vibrantes : "HHhhhhhh~"
+        
+        5. Combinaisons pour effets spéciaux :
+           - Crescendo : "mmh... Mmmh... MMmh!"
+           - Vagues de plaisir : "OoOui~..."
+           - Respiration intense : "HHhhhhhh!..."
+           - Extase maximale : "OOOuiii~!"
         
         ADAPTATION À LA PROGRESSION :
         - Début : sons doux, pauses longues (...), peu de majuscules
