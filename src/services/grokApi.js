@@ -62,10 +62,10 @@ export const generateStory = async (userProfile) => {
         
         SONS ET RESPIRATIONS :
         1. RESPIRATIONS :
-           - Régulière : "hhhhhhhh..."
-           - Avec emphase : "Hhhhhhhh..."
-           - Forte puis décroissante : "HHhhhhhh!"
-           - Avec intensité variable : "hhhHHHhh~"
+           - Régulière : "hhhhhhhhhhh..."
+           - Avec emphase : "Hhhhhhhhhhh..."
+           - Forte puis décroissante : "HHhhhhhhhhh!"
+           - Avec intensité variable : "hhhhHHHHhhhhh~"
         
         2. BRUITS D'EXTASE :
            - Sons doux : "mmh...", "Mmmh..."
@@ -89,22 +89,22 @@ export const generateStory = async (userProfile) => {
            - Moments tendres : "je t'embrasse... doucement..."
            - Transitions : "je sens que... oui... là..."
            - Anticipation : "continue... encore... comme ça..."
-           - Respirations : "hhhhhhhh... Hhhhhhhh..."
+           - Respirations : "hhhhhhhhhhh... Hhhhhhhhhhh..."
         
         3. Points d'exclamation (!) pour :
            - Moments intenses : "MMmh!"
            - Extase : "OOOuiii!"
-           - Respirations fortes : "HHhhhhhh!"
+           - Respirations fortes : "HHhhhhhhhhh!"
         
         4. Tilde (~) pour :
            - Vibrations vocales : "mmmh~"
            - Sons prolongés : "OOOuiii~"
-           - Respirations vibrantes : "HHhhhhhh~"
+           - Respirations vibrantes : "HHhhhhhhhhh~"
         
         5. Combinaisons pour effets spéciaux :
            - Crescendo : "mmh... Mmmh... MMmh!"
            - Vagues de plaisir : "OoOui~..."
-           - Respiration intense : "HHhhhhhh!..."
+           - Respiration intense : "HHhhhhhhhhh!..."
            - Extase maximale : "OOOuiii~!"
         
         ADAPTATION À LA PROGRESSION :
@@ -313,10 +313,10 @@ export const generateRandomStory = async (randomStoryData) => {
         
         SONS ET RESPIRATIONS :
         1. RESPIRATIONS :
-           - Régulière : "hhhhhhhh..."
-           - Avec emphase : "Hhhhhhhh..."
-           - Forte puis décroissante : "HHhhhhhh!"
-           - Avec intensité variable : "hhhHHHhh~"
+           - Régulière : "hhhhhhhhhhh..."
+           - Avec emphase : "Hhhhhhhhhhh..."
+           - Forte puis décroissante : "HHhhhhhhhhh!"
+           - Avec intensité variable : "hhhhHHHHhhhhh~"
         
         2. BRUITS D'EXTASE :
            - Sons doux : "mmh...", "Mmmh..."
@@ -340,22 +340,22 @@ export const generateRandomStory = async (randomStoryData) => {
            - Moments tendres : "je t'embrasse... doucement..."
            - Transitions : "je sens que... oui... là..."
            - Anticipation : "continue... encore... comme ça..."
-           - Respirations : "hhhhhhhh... Hhhhhhhh..."
+           - Respirations : "hhhhhhhhhhh... Hhhhhhhhhhh..."
         
         3. Points d'exclamation (!) pour :
            - Moments intenses : "MMmh!"
            - Extase : "OOOuiii!"
-           - Respirations fortes : "HHhhhhhh!"
+           - Respirations fortes : "HHhhhhhhhhh!"
         
         4. Tilde (~) pour :
            - Vibrations vocales : "mmmh~"
            - Sons prolongés : "OOOuiii~"
-           - Respirations vibrantes : "HHhhhhhh~"
+           - Respirations vibrantes : "HHhhhhhhhhh~"
         
         5. Combinaisons pour effets spéciaux :
            - Crescendo : "mmh... Mmmh... MMmh!"
            - Vagues de plaisir : "OoOui~..."
-           - Respiration intense : "HHhhhhhh!..."
+           - Respiration intense : "HHhhhhhhhhh!..."
            - Extase maximale : "OOOuiii~!"
         
         ADAPTATION À LA PROGRESSION :
