@@ -97,7 +97,7 @@ const HomePage = () => {
             onClick={() => navigate('/random-story-generator')}
             className="btn-secondary w-full"
           >
-            Générateur Aléatoire d'Histoire
+            Choisissez vos fantasmes
           </button>
         </div>
       </div>

@@ -24,6 +24,16 @@ export const generateStory = async (userProfile) => {
         - Ton intense et profond
         - Ton tendre et délicat
         
+        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
+        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
+        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
+        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
+        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
+        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
+        6. NE JAMAIS inclure de titres ou sous-titres
+        7. Écrire l'histoire de façon continue, comme un texte narratif pur
+        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
+
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
         2. Adapte le ton au moment de l'histoire :
@@ -31,7 +41,7 @@ export const generateStory = async (userProfile) => {
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
            - Moments culminants : jouissance
-           - Fin : retour à la douceur
+           - Fin : maintien de l'intensité
 
         PROFIL DE L'AUDITRICE :
         - Style dominant : ${dominantStyle.toLowerCase()}
@@ -50,13 +60,28 @@ export const generateStory = async (userProfile) => {
         Viens plus près de moi (...) encore plus près
         Je sens la chaleur de ton corps qui m'attire irrésistiblement
         
+        RÈGLES D'AUTHENTICITÉ :
+        1. Utilise un langage quotidien et naturel, comme dans une vraie conversation
+        2. Évite les descriptions trop poétiques ou littéraires
+        3. Privilégie les phrases courtes et directes
+        4. Utilise des expressions courantes plutôt que recherchées
+        5. Évite les métaphores complexes ou clichées
+        6. Garde un équilibre entre description et action
+
+        NARRATION (TRÈS IMPORTANT) :
+        1. Histoire racontée par une voix masculine qui s'adresse directement à l'auditrice
+        2. Utilisation du "je" pour le narrateur masculin (qui parle)
+        3. Utilisation du "tu" pour s'adresser à l'auditrice (${personalInfo.name})
+        4. Style direct et intime, comme si le narrateur parlait à l'oreille de l'auditrice
+        5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
+        6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
+        
         DIRECTIVES GÉNÉRALES :
-        1. Adresse-toi à l'auditrice à la deuxième personne ("tu")
-        2. Crée un scénario crédible et immersif
-        3. Utilise un langage naturel et fluide
-        4. Décris les sensations en détail
-        5. Intègre le désir et la complicité
-        6. Garde un ton chaleureux et vivant
+        1. Crée un scénario crédible et réaliste
+        2. Décris les actions et sensations simplement et directement
+        3. Utilise un vocabulaire courant mais sensuel
+        4. Intègre le désir de manière naturelle
+        5. Garde un ton authentique et spontané
 
         PHONÉTISATION ET RYTHME (TTS) :
         
@@ -166,7 +191,15 @@ export const generateStory = async (userProfile) => {
     }
 
     const data = await response.json()
-    return data.choices[0].message.content
+    let content = data.choices[0].message.content
+    
+    // Supprimer les annotations et analyses
+    content = content.replace(/\*\*.*?\*\*/g, '') // Supprime les marqueurs **texte**
+    content = content.replace(/###.*?\n/g, '') // Supprime les titres ### titre
+    content = content.replace(/---\n/g, '') // Supprime les séparateurs ---
+    content = content.replace(/\n\n\n###.*$/s, '') // Supprime tout ce qui suit un triple saut de ligne suivi de ###
+    
+    return content
   } catch (error) {
     console.error('Erreur API:', error)
     throw error
@@ -287,6 +320,16 @@ export const generateRandomStory = async (randomStoryData) => {
         - Ton intense et profond
         - Ton tendre et délicat
         
+        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
+        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
+        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
+        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
+        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
+        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
+        6. NE JAMAIS inclure de titres ou sous-titres
+        7. Écrire l'histoire de façon continue, comme un texte narratif pur
+        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
+        
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
         2. Adapte le ton au moment de l'histoire :
@@ -294,7 +337,7 @@ export const generateRandomStory = async (randomStoryData) => {
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
            - Moments culminants : jouissance
-           - Fin : retour à la douceur
+           - Fin : maintien de l'intensité
 
         CATÉGORIES SÉLECTIONNÉES :
         ${selectedKinks.join(', ')}
@@ -378,12 +421,27 @@ export const generateRandomStory = async (randomStoryData) => {
         CATÉGORIES À INTÉGRER :
         ${selectedKinks.join(', ')}
         
+        RÈGLES D'AUTHENTICITÉ :
+        1. Utilise un langage quotidien et naturel, comme dans une vraie conversation
+        2. Évite les descriptions trop poétiques ou littéraires
+        3. Privilégie les phrases courtes et directes
+        4. Utilise des expressions courantes plutôt que recherchées
+        5. Évite les métaphores complexes ou clichées
+        6. Garde un équilibre entre description et action
+
+        NARRATION (TRÈS IMPORTANT) :
+        1. Histoire racontée par une voix masculine qui s'adresse directement à l'auditrice
+        2. Utilisation du "je" pour le narrateur masculin (qui parle)
+        3. Utilisation du "tu" pour s'adresser à l'auditrice (${personalInfo.name})
+        4. Style direct et intime, comme si le narrateur parlait à l'oreille de l'auditrice
+        5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
+        6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
+        
         DIRECTIVES SPÉCIFIQUES :
-        1. Intègre toutes les catégories sélectionnées dans l'histoire de manière cohérente
-        2. Crée une histoire immersive et réaliste
-        3. Utilise un langage explicite mais élégant
-        4. Adresse-toi directement à ${personalInfo.name} à la deuxième personne ("tu")
-        5. Utilise abondamment les sons phonétisés et les variations de rythme
+        1. Intègre toutes les catégories sélectionnées naturellement dans l'histoire
+        2. Crée une histoire réaliste et authentique
+        3. Utilise un langage direct et explicite
+        4. Garde un équilibre entre les sons et le texte
         
         PROGRESSION :
         1. Ton doux pour poser le contexte initial
@@ -416,7 +474,15 @@ export const generateRandomStory = async (randomStoryData) => {
     }
 
     const data = await response.json()
-    return data.choices[0].message.content
+    let content = data.choices[0].message.content
+    
+    // Supprimer les annotations et analyses
+    content = content.replace(/\*\*.*?\*\*/g, '') // Supprime les marqueurs **texte**
+    content = content.replace(/###.*?\n/g, '') // Supprime les titres ### titre
+    content = content.replace(/---\n/g, '') // Supprime les séparateurs ---
+    content = content.replace(/\n\n\n###.*$/s, '') // Supprime tout ce qui suit un triple saut de ligne suivi de ###
+    
+    return content
   } catch (error) {
     console.error('Erreur API:', error)
     throw error
@@ -436,11 +502,17 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
       const styleKey = existingProfile.dominantStyle === 'VISUEL' ? 'visuel' : 
                        existingProfile.dominantStyle === 'AUDITIF' ? 'auditif' : 'kinesthesique';
       
-      // Sélectionner des éléments du vocabulaire pour ce style
-      const stylePredicats = predicats[styleKey];
-      const verbes = stylePredicats.verbes.slice(0, 8).join(', ');
-      const adjectifs = stylePredicats.adjectifs.slice(0, 8).join(', ');
-      const expressions = stylePredicats.expressions.slice(0, 5).join(', ');
+      // Récupérer le style prédicat pour ce profil
+      const styleData = predicats[styleKey];
+      
+      // Sélectionner les éléments de vocabulaire
+      const verbes = styleData.verbes.slice(0, 8).join(', ');
+      const adjectifs = styleData.adjectifs.slice(0, 8).join(', ');
+      const expressions = styleData.expressions.slice(0, 5).join(', ');
+      
+      // Récupérer les phrases spécifiques au style
+      const phrasesIntro = styleData.phrases_completes.introduction.slice(0, 2).join('\n');
+      const phrasesAction = styleData.phrases_completes.action.slice(0, 4).join('\n');
       
       vocabulaireStyle = `
       VOCABULAIRE SUGGÉRÉ POUR TON STYLE ${existingProfile.dominantStyle} :
@@ -451,25 +523,21 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
       
       EXPRESSIONS : ${expressions}
       `;
-      
+
       narrativeStyle = `
       STYLE NARRATIF ${existingProfile.dominantStyle} :
-      ${existingProfile.dominantStyle === 'VISUEL' ? `
-      - Accentue les descriptions visuelles
-      - Décris les regards, les postures, la lumière
-      - Utilise un vocabulaire visuel riche
-      - Mets l'accent sur ce qui se voit
-      ` : existingProfile.dominantStyle === 'AUDITIF' ? `
-      - Enrichis avec des sons, soupirs, murmures
-      - Décris les voix, les gémissements
-      - Utilise un vocabulaire sonore riche
-      - Mets l'accent sur ce qui s'entend
-      ` : `
-      - Détaille les sensations physiques
-      - Décris les touchers, les frissons
-      - Utilise un vocabulaire tactile riche
-      - Mets l'accent sur ce qui se ressent
-      `}
+      ${styleData.description}
+
+      PHASES DE L'HISTOIRE :
+      INTRODUCTION : ${styleData.phases.introduction}
+      MONTÉE : ${styleData.phases.montee}
+      CLIMAX : ${styleData.phases.climax}
+
+      EXEMPLES DE PHRASES POUR L'INTRODUCTION :
+      ${phrasesIntro}
+
+      EXEMPLES DE PHRASES POUR L'ACTION :
+      ${phrasesAction}
 
       TYPE D'EXCITATION ${existingProfile?.excitationType} :
       - Adapte l'intensité selon le profil
@@ -517,6 +585,16 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
         - Ton intense et profond
         - Ton tendre et délicat
         
+        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
+        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
+        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
+        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
+        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
+        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
+        6. NE JAMAIS inclure de titres ou sous-titres
+        7. Écrire l'histoire de façon continue, comme un texte narratif pur
+        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
+        
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
         2. Adapte le ton au moment de l'histoire :
@@ -524,7 +602,7 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
            - Moments culminants : jouissance
-           - Fin : retour à la douceur
+           - Fin : maintien de l'intensité
 
         PHONÉTISATION ET RYTHME (TTS) :
         
@@ -591,7 +669,23 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
         ${vocabulaireStyle}
         ` : ''}
         
-        L'histoire doit être immersive et suivre une progression naturelle du désir.`
+        RÈGLES D'AUTHENTICITÉ :
+        1. Utilise un langage quotidien et naturel, comme dans une vraie conversation
+        2. Évite les descriptions trop poétiques ou littéraires
+        3. Privilégie les phrases courtes et directes
+        4. Utilise des expressions courantes plutôt que recherchées
+        5. Évite les métaphores complexes ou clichées
+        6. Garde un équilibre entre description et action
+
+        NARRATION (TRÈS IMPORTANT) :
+        1. Histoire racontée par une voix masculine qui s'adresse directement à l'auditrice
+        2. Utilisation du "je" pour le narrateur masculin (qui parle)
+        3. Utilisation du "tu" pour s'adresser à l'auditrice (${existingProfile ? existingProfile.name : 'l\'auditrice'})
+        4. Style direct et intime, comme si le narrateur parlait à l'oreille de l'auditrice
+        5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
+        6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
+        
+        L'histoire doit être authentique et suivre une progression naturelle du désir.`
       }
     ];
 
@@ -614,7 +708,15 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
     }
 
     const data = await response.json();
-    return data.choices[0].message.content;
+    let content = data.choices[0].message.content;
+    
+    // Supprimer les annotations et analyses
+    content = content.replace(/\*\*.*?\*\*/g, ''); // Supprime les marqueurs **texte**
+    content = content.replace(/###.*?\n/g, ''); // Supprime les titres ### titre
+    content = content.replace(/---\n/g, ''); // Supprime les séparateurs ---
+    content = content.replace(/\n\n\n###.*$/s, ''); // Supprime tout ce qui suit un triple saut de ligne suivi de ###
+    
+    return content;
   } catch (error) {
     console.error('Erreur API:', error);
     throw error;
@@ -704,6 +806,16 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
         - Ton intense et profond
         - Ton tendre et délicat
         
+        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
+        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
+        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
+        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
+        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
+        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
+        6. NE JAMAIS inclure de titres ou sous-titres
+        7. Écrire l'histoire de façon continue, comme un texte narratif pur
+        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
+        
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
         2. Adapte le ton au moment de l'histoire :
@@ -711,7 +823,7 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
            - Moments culminants : jouissance
-           - Fin : retour à la douceur
+           - Fin : maintien de l'intensité
 
         PHONÉTISATION ET RYTHME (TTS) :
         
@@ -777,7 +889,23 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
         ${vocabulaireStyle}
         ` : ''}
         
-        L'histoire doit être immersive et suivre une progression naturelle du désir, tout en respectant fidèlement les éléments du fantasme décrit.`
+        RÈGLES D'AUTHENTICITÉ :
+        1. Utilise un langage quotidien et naturel, comme dans une vraie conversation
+        2. Évite les descriptions trop poétiques ou littéraires
+        3. Privilégie les phrases courtes et directes
+        4. Utilise des expressions courantes plutôt que recherchées
+        5. Évite les métaphores complexes ou clichées
+        6. Garde un équilibre entre description et action
+
+        NARRATION (TRÈS IMPORTANT) :
+        1. Histoire racontée par une voix masculine qui s'adresse directement à l'auditrice
+        2. Utilisation du "je" pour le narrateur masculin (qui parle)
+        3. Utilisation du "tu" pour s'adresser à l'auditrice (${existingProfile ? existingProfile.name : 'l\'auditrice'})
+        4. Style direct et intime, comme si le narrateur parlait à l'oreille de l'auditrice
+        5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
+        6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
+        
+        L'histoire doit être authentique et naturelle, en respectant fidèlement les éléments du fantasme tout en utilisant un langage direct et réaliste.`
       }
     ];
 
@@ -800,7 +928,15 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
     }
 
     const data = await response.json();
-    return data.choices[0].message.content;
+    let content = data.choices[0].message.content;
+    
+    // Supprimer les annotations et analyses
+    content = content.replace(/\*\*.*?\*\*/g, ''); // Supprime les marqueurs **texte**
+    content = content.replace(/###.*?\n/g, ''); // Supprime les titres ### titre
+    content = content.replace(/---\n/g, ''); // Supprime les séparateurs ---
+    content = content.replace(/\n\n\n###.*$/s, ''); // Supprime tout ce qui suit un triple saut de ligne suivi de ###
+    
+    return content;
   } catch (error) {
     console.error('Erreur API:', error);
     throw error;
