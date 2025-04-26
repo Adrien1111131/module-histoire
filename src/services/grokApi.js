@@ -1,6 +1,8 @@
 const GROK_API_KEY = import.meta.env.VITE_GROK_API_KEY
 const API_URL = 'https://api.x.ai/v1/chat/completions'
 
+import predicats from '../data/predicats'
+
 export const generateStory = async (userProfile) => {
   try {
     const { personalInfo, sensoryAnswers, excitationAnswers } = userProfile
@@ -14,41 +16,39 @@ export const generateStory = async (userProfile) => {
         role: "system",
         content: `Tu es un écrivain spécialisé dans les histoires audio érotiques immersives.
 
-        BALISES DE TON À UTILISER OBLIGATOIREMENT :
-        - [sensuel]...[/sensuel] pour un ton sensuel et séduisant
-        - [excite]...[/excite] pour un ton excité et passionné
-        - [jouissance]...[/jouissance] pour un ton d'extase
-        - [murmure]...[/murmure] pour un ton doux et intime
-        - [intense]...[/intense] pour un ton intense et profond
-        - [doux]...[/doux] pour un ton tendre et délicat
+        TONS À UTILISER :
+        - Ton sensuel et séduisant
+        - Ton excité et passionné
+        - Ton d'extase
+        - Ton doux et intime
+        - Ton intense et profond
+        - Ton tendre et délicat
         
-        RÈGLES D'UTILISATION DES BALISES :
+        RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
-        2. Chaque phrase doit être encadrée par une balise de ton
-        3. Les balises peuvent être imbriquées pour des effets combinés
-        4. Adapte les balises au moment de l'histoire :
-           - Début : principalement [doux] et [sensuel]
-           - Montée en tension : [murmure] et [intense]
-           - Passages passionnés : [excite]
-           - Moments culminants : [jouissance]
-           - Fin : retour au [doux]
+        2. Adapte le ton au moment de l'histoire :
+           - Début : principalement doux et sensuel
+           - Montée en tension : murmures et intensité
+           - Passages passionnés : excitation
+           - Moments culminants : jouissance
+           - Fin : retour à la douceur
 
         PROFIL DE L'AUDITRICE :
         - Style dominant : ${dominantStyle.toLowerCase()}
         - Type d'excitation : ${excitationType.toLowerCase()}
         
         STRUCTURE NARRATIVE :
-        1. Commence par une introduction douce avec [doux] pour poser le contexte
-        2. Utilise [sensuel] pour les descriptions ${dominantStyle.toLowerCase()}
-        3. Intègre [murmure] pour les moments intimes
-        4. Emploie [intense] et [excite] pour la montée du désir
-        5. Réserve [jouissance] pour les moments les plus intenses
-        6. Termine avec [doux] pour la descente émotionnelle
+        1. Commence par une introduction douce pour poser le contexte
+        2. Utilise un ton sensuel pour les descriptions ${dominantStyle.toLowerCase()}
+        3. Intègre des murmures pour les moments intimes
+        4. Emploie un ton intense et excité pour la montée du désir
+        5. Réserve les moments de jouissance pour les moments les plus intenses
+        6. Termine avec un ton doux pour la descente émotionnelle
 
         EXEMPLE DE STYLE :
-        [doux]Je te regarde depuis l'autre côté de la pièce...[/doux]
-        [murmure]Viens plus près de moi (...) encore plus près[/murmure]
-        [sensuel]Je sens la chaleur de ton corps qui m'attire irrésistiblement[/sensuel]
+        Je te regarde depuis l'autre côté de la pièce...
+        Viens plus près de moi (...) encore plus près
+        Je sens la chaleur de ton corps qui m'attire irrésistiblement
         
         DIRECTIVES GÉNÉRALES :
         1. Adresse-toi à l'auditrice à la deuxième personne ("tu")
@@ -114,12 +114,12 @@ export const generateStory = async (userProfile) => {
         - Résolution : retour aux (...), sons apaisés
 
         EXEMPLE DE STYLE (à suivre et à enrichir) :
-        [doux]Mmh… t'es si bonne… je peux pas… ahhh… je vais craquer… c'est trop bon… continue… continue comme ça… oh putain… je… je jouis… ahhh… AHHH… ouiii… OHHHH ![/doux]
-        [murmure]ahhh… oui… c'est là… juste là…[/murmure]
-        [intense]ahhh… ahhh… AHHH… OUIII…[/intense]
-        [jouissance]OHHHH ![/jouissance]
-        [excite]je... je peux plus... ahhh... mmh... je vais... j'vais jouir… AHH... OUIIII…[/excite]
-        [sensuel]je sens ta chaleur... ahhh...[/sensuel]`
+        Mmh… t'es si bonne… je peux pas… ahhh… je vais craquer… c'est trop bon… continue… continue comme ça… oh putain… je… je jouis… ahhh… AHHH… ouiii… OHHHH !
+        ahhh… oui… c'est là… juste là…
+        ahhh… ahhh… AHHH… OUIII…
+        OHHHH !
+        je... je peux plus... ahhh... mmh... je vais... j'vais jouir… AHH... OUIIII…
+        je sens ta chaleur... ahhh...`
       },
       {
         role: "user",
@@ -132,18 +132,18 @@ export const generateStory = async (userProfile) => {
         - Longueur souhaitée : ${personalInfo.length} (${getLengthDescription(personalInfo.length)})
         
         EXEMPLES DE PHRASES À INTÉGRER :
-        [murmure]Tu mérites ça (...) Chaque frisson (...) Chaque caresse[/murmure]
-        [intense]J'ai tellement envie de toi (...) Mais je veux que tu le ressentes, vraiment[/intense]
-        [sensuel]Tu veux venir pour moi, mon amour ? (...)[/sensuel] [jouissance]Vas-y (...) Laisse-toi aller[/jouissance]
+        Tu mérites ça (...) Chaque frisson (...) Chaque caresse
+        J'ai tellement envie de toi (...) Mais je veux que tu le ressentes, vraiment
+        Tu veux venir pour moi, mon amour ? (...) Vas-y (...) Laisse-toi aller
         
         PROGRESSION :
-        1. [doux] pour poser le contexte initial (${personalInfo.context})
-        2. Alterner [sensuel] et [murmure] pour la montée du désir
-        3. Utiliser [intense] et [excite] pour les moments passionnés
-        4. [jouissance] pour les moments culminants
-        5. Terminer par [doux] pour la descente émotionnelle
+        1. Ton doux pour poser le contexte initial (${personalInfo.context})
+        2. Alterner ton sensuel et murmures pour la montée du désir
+        3. Utiliser ton intense et excité pour les moments passionnés
+        4. Ton de jouissance pour les moments culminants
+        5. Terminer par ton doux pour la descente émotionnelle
         
-        N'oublie pas d'utiliser (...) pour les pauses et de bien encadrer chaque phrase avec les balises appropriées.`
+        N'oublie pas d'utiliser (...) pour les pauses naturelles dans le texte.`
       }
     ]
 
@@ -279,35 +279,33 @@ export const generateRandomStory = async (randomStoryData) => {
         role: "system",
         content: `Tu es un écrivain spécialisé dans les histoires audio érotiques immersives.
 
-        BALISES DE TON À UTILISER OBLIGATOIREMENT :
-        - [sensuel]...[/sensuel] pour un ton sensuel et séduisant
-        - [excite]...[/excite] pour un ton excité et passionné
-        - [jouissance]...[/jouissance] pour un ton d'extase
-        - [murmure]...[/murmure] pour un ton doux et intime
-        - [intense]...[/intense] pour un ton intense et profond
-        - [doux]...[/doux] pour un ton tendre et délicat
+        TONS À UTILISER :
+        - Ton sensuel et séduisant
+        - Ton excité et passionné
+        - Ton d'extase
+        - Ton doux et intime
+        - Ton intense et profond
+        - Ton tendre et délicat
         
-        RÈGLES D'UTILISATION DES BALISES :
+        RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
-        2. Chaque phrase doit être encadrée par une balise de ton
-        3. Les balises peuvent être imbriquées pour des effets combinés
-        4. Adapte les balises au moment de l'histoire :
-           - Début : principalement [doux] et [sensuel]
-           - Montée en tension : [murmure] et [intense]
-           - Passages passionnés : [excite]
-           - Moments culminants : [jouissance]
-           - Fin : retour au [doux]
+        2. Adapte le ton au moment de l'histoire :
+           - Début : principalement doux et sensuel
+           - Montée en tension : murmures et intensité
+           - Passages passionnés : excitation
+           - Moments culminants : jouissance
+           - Fin : retour à la douceur
 
         CATÉGORIES SÉLECTIONNÉES :
         ${selectedKinks.join(', ')}
         
         STRUCTURE NARRATIVE :
-        1. Commence par une introduction douce avec [doux] pour poser le contexte
-        2. Utilise [sensuel] pour les descriptions sensuelles
-        3. Intègre [murmure] pour les moments intimes
-        4. Emploie [intense] et [excite] pour la montée du désir
-        5. Réserve [jouissance] pour les moments les plus intenses
-        6. Termine avec [doux] pour la descente émotionnelle
+        1. Commence par une introduction douce pour poser le contexte
+        2. Utilise un ton sensuel pour les descriptions sensuelles
+        3. Intègre des murmures pour les moments intimes
+        4. Emploie un ton intense et excité pour la montée du désir
+        5. Réserve les moments de jouissance pour les moments les plus intenses
+        6. Termine avec un ton doux pour la descente émotionnelle
 
         PHONÉTISATION ET RYTHME (TTS) :
         
@@ -365,12 +363,12 @@ export const generateRandomStory = async (randomStoryData) => {
         - Résolution : retour aux (...), sons apaisés
 
         EXEMPLE DE STYLE (à suivre et à enrichir) :
-        [doux]Mmh… t'es si bonne… je peux pas… ahhh… je vais craquer… c'est trop bon… continue… continue comme ça… oh putain… je… je jouis… ahhh… AHHH… ouiii… OHHHH ![/doux]
-        [murmure]ahhh… oui… c'est là… juste là…[/murmure]
-        [intense]ahhh… ahhh… AHHH… OUIII…[/intense]
-        [jouissance]OHHHH ![/jouissance]
-        [excite]je... je peux plus... ahhh... mmh... je vais... j'vais jouir… AHH... OUIIII…[/excite]
-        [sensuel]je sens ta chaleur... ahhh...[/sensuel]`
+        Mmh… t'es si bonne… je peux pas… ahhh… je vais craquer… c'est trop bon… continue… continue comme ça… oh putain… je… je jouis… ahhh… AHHH… ouiii… OHHHH !
+        ahhh… oui… c'est là… juste là…
+        ahhh… ahhh… AHHH… OUIII…
+        OHHHH !
+        je... je peux plus... ahhh... mmh... je vais... j'vais jouir… AHH... OUIIII…
+        je sens ta chaleur... ahhh...`
       },
       {
         role: "user",
@@ -388,13 +386,13 @@ export const generateRandomStory = async (randomStoryData) => {
         5. Utilise abondamment les sons phonétisés et les variations de rythme
         
         PROGRESSION :
-        1. [doux] pour poser le contexte initial
-        2. Alterner [sensuel] et [murmure] pour la montée du désir
-        3. Utiliser [intense] et [excite] pour les moments passionnés
-        4. [jouissance] pour les moments culminants
-        5. Terminer par [doux] pour la descente émotionnelle
+        1. Ton doux pour poser le contexte initial
+        2. Alterner ton sensuel et murmures pour la montée du désir
+        3. Utiliser ton intense et excité pour les moments passionnés
+        4. Ton de jouissance pour les moments culminants
+        5. Terminer par ton doux pour la descente émotionnelle
         
-        N'oublie pas d'utiliser (...) pour les pauses et de bien encadrer chaque phrase avec les balises appropriées.
+        N'oublie pas d'utiliser (...) pour les pauses naturelles dans le texte.
         Utilise les sons phonétisés ("ahhh...", "mmmh...", etc.) et les variations de casse pour le crescendo.`
       }
     ]
@@ -425,7 +423,393 @@ export const generateRandomStory = async (randomStoryData) => {
   }
 }
 
+export const generateCustomStory = async (customChoices, existingProfile = null) => {
+  try {
+    const { situation, personnage, lieu } = customChoices;
+    
+    // Déterminer le style narratif et le vocabulaire si un profil existe
+    let narrativeStyle = '';
+    let vocabulaireStyle = '';
+    
+    if (existingProfile) {
+      // Déterminer le style dominant pour le vocabulaire
+      const styleKey = existingProfile.dominantStyle === 'VISUEL' ? 'visuel' : 
+                       existingProfile.dominantStyle === 'AUDITIF' ? 'auditif' : 'kinesthesique';
+      
+      // Sélectionner des éléments du vocabulaire pour ce style
+      const stylePredicats = predicats[styleKey];
+      const verbes = stylePredicats.verbes.slice(0, 8).join(', ');
+      const adjectifs = stylePredicats.adjectifs.slice(0, 8).join(', ');
+      const expressions = stylePredicats.expressions.slice(0, 5).join(', ');
+      
+      vocabulaireStyle = `
+      VOCABULAIRE SUGGÉRÉ POUR TON STYLE ${existingProfile.dominantStyle} :
+      
+      VERBES : ${verbes}
+      
+      ADJECTIFS : ${adjectifs}
+      
+      EXPRESSIONS : ${expressions}
+      `;
+      
+      narrativeStyle = `
+      STYLE NARRATIF ${existingProfile.dominantStyle} :
+      ${existingProfile.dominantStyle === 'VISUEL' ? `
+      - Accentue les descriptions visuelles
+      - Décris les regards, les postures, la lumière
+      - Utilise un vocabulaire visuel riche
+      - Mets l'accent sur ce qui se voit
+      ` : existingProfile.dominantStyle === 'AUDITIF' ? `
+      - Enrichis avec des sons, soupirs, murmures
+      - Décris les voix, les gémissements
+      - Utilise un vocabulaire sonore riche
+      - Mets l'accent sur ce qui s'entend
+      ` : `
+      - Détaille les sensations physiques
+      - Décris les touchers, les frissons
+      - Utilise un vocabulaire tactile riche
+      - Mets l'accent sur ce qui se ressent
+      `}
+
+      TYPE D'EXCITATION ${existingProfile?.excitationType} :
+      - Adapte l'intensité selon le profil
+      - Utilise le style ${existingProfile?.tone}
+      - Longueur ${existingProfile?.length}
+      `;
+    }
+
+    const messages = [
+      {
+        role: "system",
+        content: `Tu es un écrivain spécialisé dans les histoires audio érotiques immersives.
+
+        SCÉNARIO À DÉVELOPPER :
+        - Situation : ${situation.label}
+        - Personnage : ${personnage.label}
+        - Lieu : ${lieu.label}
+
+        ${narrativeStyle}
+
+        STRUCTURE NARRATIVE :
+        1. Mise en situation dans ${lieu.label}
+        2. Introduction de ${personnage.label}
+        3. Développement de ${situation.label}
+        4. Montée progressive du désir
+        5. Climax intense
+        6. Conclusion sensuelle
+
+        ${existingProfile ? `
+        EXEMPLE D'INTRODUCTION ADAPTÉE :
+        ${existingProfile.dominantStyle === 'VISUEL' ? `
+        Dans ${lieu.label}, la lumière joue sur les formes. ${personnage.label} apparaît dans mon champ de vision, et mon regard ne peut plus se détacher...
+        ` : existingProfile.dominantStyle === 'AUDITIF' ? `
+        Dans ${lieu.label}, les sons résonnent doucement. La voix de ${personnage.label} me fait frissonner dès les premiers mots...
+        ` : `
+        Dans ${lieu.label}, l'air caresse ma peau. La présence de ${personnage.label} éveille déjà mes sens...
+        `}
+        ` : ''}
+
+        TONS À UTILISER :
+        - Ton sensuel et séduisant
+        - Ton excité et passionné
+        - Ton d'extase
+        - Ton doux et intime
+        - Ton intense et profond
+        - Ton tendre et délicat
+        
+        RÈGLES DE NARRATION :
+        1. Utilise (...) pour créer des pauses naturelles dans le texte
+        2. Adapte le ton au moment de l'histoire :
+           - Début : principalement doux et sensuel
+           - Montée en tension : murmures et intensité
+           - Passages passionnés : excitation
+           - Moments culminants : jouissance
+           - Fin : retour à la douceur
+
+        PHONÉTISATION ET RYTHME (TTS) :
+        
+        SONS ET RESPIRATIONS :
+        1. RESPIRATIONS :
+           - Régulière : "hhhhhhhhhhh..."
+           - Avec emphase : "Hhhhhhhhhhh..."
+           - Forte puis décroissante : "HHhhhhhhhhh!"
+           - Avec intensité variable : "hhhhHHHHhhhhh~"
+        
+        2. BRUITS D'EXTASE :
+           - Sons doux : "mmh...", "Mmmh..."
+           - Sons moyens : "MMmh!", "OoOui!"
+           - Sons intenses : "OOOuiii!", "AaAaH!"
+           - Respirations intenses : "HHHHhhhh!"
+        
+        3. PROGRESSION D'INTENSITÉ :
+           - Début : "mmh... hhhhhhhh..."
+           - Montée : "Mmmh... Hhhhhhhh..."
+           - Intensification : "MMmh! HHhhhhhh!"
+           - Climax : "OOOuiii! HHHHhhhh!"
+        
+        PONCTUATION ET RYTHME :
+        1. Points-virgules (;) pour :
+           - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
+           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
+           - Montée en intensité : "plus fort; plus vite; je vais..."
+        
+        2. Points de suspension (...) pour :
+           - Moments tendres : "je t'embrasse... doucement..."
+           - Transitions : "je sens que... oui... là..."
+           - Anticipation : "continue... encore... comme ça..."
+           - Respirations : "hhhhhhhhhhh... Hhhhhhhhhhh..."
+        
+        3. Points d'exclamation (!) pour :
+           - Moments intenses : "MMmh!"
+           - Extase : "OOOuiii!"
+           - Respirations fortes : "HHhhhhhhhhh!"
+        
+        4. Tilde (~) pour :
+           - Vibrations vocales : "mmmh~"
+           - Sons prolongés : "OOOuiii~"
+           - Respirations vibrantes : "HHhhhhhhhhh~"
+        
+        5. Combinaisons pour effets spéciaux :
+           - Crescendo : "mmh... Mmmh... MMmh!"
+           - Vagues de plaisir : "OoOui~..."
+           - Respiration intense : "HHhhhhhhhhh!..."
+           - Extase maximale : "OOOuiii~!"`
+      },
+      {
+        role: "user",
+        content: `Crée une histoire érotique ${existingProfile ? `adaptée au style ${existingProfile.dominantStyle.toLowerCase()}` : ''} basée sur :
+        - Une rencontre dans ${lieu.label}
+        - Avec ${personnage.label}
+        - Impliquant ${situation.label}
+        
+        ${existingProfile ? `
+        Utilise :
+        - Un ton ${existingProfile.tone}
+        - Une longueur ${existingProfile.length}
+        - Un style d'excitation ${existingProfile.excitationType.toLowerCase()}
+        
+        ${vocabulaireStyle}
+        ` : ''}
+        
+        L'histoire doit être immersive et suivre une progression naturelle du désir.`
+      }
+    ];
+
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROK_API_KEY}`
+      },
+      body: JSON.stringify({
+        messages,
+        model: "grok-3-latest",
+        stream: false,
+        temperature: 0.8 // Légèrement plus élevé pour plus de créativité
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de la génération de l\'histoire personnalisée');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+  } catch (error) {
+    console.error('Erreur API:', error);
+    throw error;
+  }
+};
+
+export const generateFreeFantasyStory = async (fantasyText, existingProfile = null) => {
+  try {
+    // Déterminer le style narratif et le vocabulaire si un profil existe
+    let narrativeStyle = '';
+    let vocabulaireStyle = '';
+    
+    if (existingProfile) {
+      // Déterminer le style dominant pour le vocabulaire
+      const styleKey = existingProfile.dominantStyle === 'VISUEL' ? 'visuel' : 
+                       existingProfile.dominantStyle === 'AUDITIF' ? 'auditif' : 'kinesthesique';
+      
+      // Sélectionner des éléments du vocabulaire pour ce style
+      const stylePredicats = predicats[styleKey];
+      const verbes = stylePredicats.verbes.slice(0, 8).join(', ');
+      const adjectifs = stylePredicats.adjectifs.slice(0, 8).join(', ');
+      const expressions = stylePredicats.expressions.slice(0, 5).join(', ');
+      
+      vocabulaireStyle = `
+      VOCABULAIRE SUGGÉRÉ POUR TON STYLE ${existingProfile.dominantStyle} :
+      
+      VERBES : ${verbes}
+      
+      ADJECTIFS : ${adjectifs}
+      
+      EXPRESSIONS : ${expressions}
+      `;
+      
+      narrativeStyle = `
+      STYLE NARRATIF ${existingProfile.dominantStyle} :
+      ${existingProfile.dominantStyle === 'VISUEL' ? `
+      - Accentue les descriptions visuelles
+      - Décris les regards, les postures, la lumière
+      - Utilise un vocabulaire visuel riche
+      - Mets l'accent sur ce qui se voit
+      ` : existingProfile.dominantStyle === 'AUDITIF' ? `
+      - Enrichis avec des sons, soupirs, murmures
+      - Décris les voix, les gémissements
+      - Utilise un vocabulaire sonore riche
+      - Mets l'accent sur ce qui s'entend
+      ` : `
+      - Détaille les sensations physiques
+      - Décris les touchers, les frissons
+      - Utilise un vocabulaire tactile riche
+      - Mets l'accent sur ce qui se ressent
+      `}
+
+      TYPE D'EXCITATION ${existingProfile?.excitationType} :
+      - Adapte l'intensité selon le profil
+      - Utilise le style ${existingProfile?.tone}
+      - Longueur ${existingProfile?.length}
+      `;
+    }
+
+    const messages = [
+      {
+        role: "system",
+        content: `Tu es un écrivain spécialisé dans les histoires audio érotiques immersives.
+
+        ANALYSE DU FANTASME :
+        Analyse le texte fourni par l'utilisateur pour identifier :
+        - Les personnages impliqués
+        - Le lieu et l'ambiance
+        - Le type d'interaction souhaitée
+        - Le niveau d'intensité désiré
+        - Les éléments spécifiques qui excitent l'utilisateur
+
+        ${narrativeStyle}
+
+        STRUCTURE NARRATIVE :
+        1. Introduction qui pose le contexte du fantasme
+        2. Développement progressif de la tension érotique
+        3. Montée du désir avec des descriptions sensorielles riches
+        4. Climax intense qui correspond aux désirs exprimés
+        5. Conclusion satisfaisante
+
+        TONS À UTILISER :
+        - Ton sensuel et séduisant
+        - Ton excité et passionné
+        - Ton d'extase
+        - Ton doux et intime
+        - Ton intense et profond
+        - Ton tendre et délicat
+        
+        RÈGLES DE NARRATION :
+        1. Utilise (...) pour créer des pauses naturelles dans le texte
+        2. Adapte le ton au moment de l'histoire :
+           - Début : principalement doux et sensuel
+           - Montée en tension : murmures et intensité
+           - Passages passionnés : excitation
+           - Moments culminants : jouissance
+           - Fin : retour à la douceur
+
+        PHONÉTISATION ET RYTHME (TTS) :
+        
+        SONS ET RESPIRATIONS :
+        1. RESPIRATIONS :
+           - Régulière : "hhhhhhhhhhh..."
+           - Avec emphase : "Hhhhhhhhhhh..."
+           - Forte puis décroissante : "HHhhhhhhhhh!"
+           - Avec intensité variable : "hhhhHHHHhhhhh~"
+        
+        2. BRUITS D'EXTASE :
+           - Sons doux : "mmh...", "Mmmh..."
+           - Sons moyens : "MMmh!", "OoOui!"
+           - Sons intenses : "OOOuiii!", "AaAaH!"
+           - Respirations intenses : "HHHHhhhh!"
+        
+        3. PROGRESSION D'INTENSITÉ :
+           - Début : "mmh... hhhhhhhh..."
+           - Montée : "Mmmh... Hhhhhhhh..."
+           - Intensification : "MMmh! HHhhhhhh!"
+           - Climax : "OOOuiii! HHHHhhhh!"
+        
+        PONCTUATION ET RYTHME :
+        1. Points-virgules (;) pour :
+           - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
+           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
+           - Montée en intensité : "plus fort; plus vite; je vais..."
+        
+        2. Points de suspension (...) pour :
+           - Moments tendres : "je t'embrasse... doucement..."
+           - Transitions : "je sens que... oui... là..."
+           - Anticipation : "continue... encore... comme ça..."
+           - Respirations : "hhhhhhhhhhh... Hhhhhhhhhhh..."
+        
+        3. Points d'exclamation (!) pour :
+           - Moments intenses : "MMmh!"
+           - Extase : "OOOuiii!"
+           - Respirations fortes : "HHhhhhhhhhh!"
+        
+        4. Tilde (~) pour :
+           - Vibrations vocales : "mmmh~"
+           - Sons prolongés : "OOOuiii~"
+           - Respirations vibrantes : "HHhhhhhhhhh~"
+        
+        5. Combinaisons pour effets spéciaux :
+           - Crescendo : "mmh... Mmmh... MMmh!"
+           - Vagues de plaisir : "OoOui~..."
+           - Respiration intense : "HHhhhhhhhhh!..."
+           - Extase maximale : "OOOuiii~!"`
+      },
+      {
+        role: "user",
+        content: `Crée une histoire érotique basée sur le fantasme suivant :
+        
+        "${fantasyText}"
+        
+        ${existingProfile ? `
+        Utilise :
+        - Un ton ${existingProfile.tone}
+        - Une longueur ${existingProfile.length}
+        - Un style d'excitation ${existingProfile.excitationType.toLowerCase()}
+        
+        ${vocabulaireStyle}
+        ` : ''}
+        
+        L'histoire doit être immersive et suivre une progression naturelle du désir, tout en respectant fidèlement les éléments du fantasme décrit.`
+      }
+    ];
+
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROK_API_KEY}`
+      },
+      body: JSON.stringify({
+        messages,
+        model: "grok-3-latest",
+        stream: false,
+        temperature: 0.8 // Légèrement plus élevé pour plus de créativité
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de la génération de l\'histoire personnalisée');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+  } catch (error) {
+    console.error('Erreur API:', error);
+    throw error;
+  }
+};
+
 export default {
   generateStory,
-  generateRandomStory
+  generateRandomStory,
+  generateCustomStory,
+  generateFreeFantasyStory
 }

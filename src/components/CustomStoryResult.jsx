@@ -1,51 +1,54 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import grokApi from '../services/grokApi'
+ import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import grokApi from '../services/grokApi';
 
-const RandomStoryResult = ({ randomStoryData }) => {
-  const navigate = useNavigate()
-  const [story, setStory] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [copySuccess, setCopySuccess] = useState(false)
+const CustomStoryResult = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { customChoices, existingProfile } = location.state || {};
+  
+  const [story, setStory] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
-    generateStory()
-  }, [])
+    if (!customChoices) {
+      setError('Aucune sélection trouvée. Veuillez retourner à la sélection.');
+      setLoading(false);
+      return;
+    }
+    
+    generateStory();
+  }, []);
 
   const generateStory = async () => {
     try {
-      setLoading(true)
-      setError(null)
-      setCopySuccess(false)
+      setLoading(true);
+      setError(null);
+      setCopySuccess(false);
       
-      if (!randomStoryData || !randomStoryData.personalInfo || !randomStoryData.selectedKinks) {
-        setError('Données insuffisantes pour générer une histoire. Veuillez retourner à la sélection.')
-        setLoading(false)
-        return
-      }
-      
-      const generatedStory = await grokApi.generateRandomStory(randomStoryData)
-      setStory(generatedStory)
+      const generatedStory = await grokApi.generateCustomStory(customChoices, existingProfile);
+      setStory(generatedStory);
     } catch (err) {
-      setError('Une erreur est survenue lors de la génération de l\'histoire.')
-      console.error('Erreur de génération:', err)
+      setError('Une erreur est survenue lors de la génération de l\'histoire.');
+      console.error('Erreur de génération:', err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(story)
       .then(() => {
-        setCopySuccess(true)
-        setTimeout(() => setCopySuccess(false), 2000)
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 2000);
       })
       .catch(err => {
-        console.error('Erreur de copie:', err)
-        alert('Impossible de copier l\'histoire. Veuillez réessayer.')
-      })
-  }
+        console.error('Erreur de copie:', err);
+        alert('Impossible de copier l\'histoire. Veuillez réessayer.');
+      });
+  };
 
   if (loading) {
     return (
@@ -60,13 +63,13 @@ const RandomStoryResult = ({ randomStoryData }) => {
             </div>
             <h2 className="text-2xl font-bold">Génération en cours...</h2>
             <p className="text-gray-600">
-              Nous créons une histoire unique basée sur vos catégories sélectionnées.
+              Nous créons une histoire unique basée sur vos choix.
               <br />Cela peut prendre quelques instants.
             </p>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -86,7 +89,7 @@ const RandomStoryResult = ({ randomStoryData }) => {
           </div>
           <div className="flex justify-between">
             <button
-              onClick={() => navigate('/random-story-generator')}
+              onClick={() => navigate('/custom-story')}
               className="btn-secondary"
             >
               Retour à la sélection
@@ -100,13 +103,27 @@ const RandomStoryResult = ({ randomStoryData }) => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="max-w-2xl mx-auto">
       <div className="question-card">
         <h2 className="text-2xl font-bold mb-6">Votre histoire personnalisée</h2>
+        
+        {customChoices && (
+          <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
+            <h3 className="text-sm font-medium text-blue-700 mb-2">Vos choix :</h3>
+            <ul className="list-disc list-inside text-blue-700 space-y-1">
+              <li>Situation : {customChoices.situation.label}</li>
+              <li>Personnage : {customChoices.personnage.label}</li>
+              <li>Lieu : {customChoices.lieu.label}</li>
+              {existingProfile && (
+                <li>Style narratif : {existingProfile.dominantStyle}</li>
+              )}
+            </ul>
+          </div>
+        )}
         
         <div className="prose prose-lg max-w-none mb-6">
           {story.split('\n').map((paragraph, index) => {
@@ -146,10 +163,10 @@ const RandomStoryResult = ({ randomStoryData }) => {
 
         <div className="flex justify-between pt-6">
           <button
-            onClick={() => navigate('/random-story-generator')}
+            onClick={() => navigate('/custom-story')}
             className="btn-secondary"
           >
-            Nouvelle histoire aléatoire
+            Nouvelle histoire
           </button>
           <div className="space-x-4">
             <button
@@ -174,7 +191,7 @@ const RandomStoryResult = ({ randomStoryData }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RandomStoryResult
+export default CustomStoryResult;

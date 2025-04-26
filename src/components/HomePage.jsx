@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ProfileCard from './ProfileCard'
+import profileService from '../services/profileService'
 
 const HomePage = () => {
   const navigate = useNavigate()
+  const [profiles, setProfiles] = useState([])
+
+  useEffect(() => {
+    // Charger les profils au démarrage
+    loadProfiles()
+  }, [])
+
+  const loadProfiles = () => {
+    const savedProfiles = profileService.getProfiles()
+    setProfiles(savedProfiles)
+  }
+
+  const handleSelectProfile = (profileId) => {
+    // Pour l'instant, juste naviguer vers la page d'accueil
+    // Dans une future implémentation, on pourrait utiliser ce profil pour générer une histoire
+    console.log('Profil sélectionné:', profileId)
+    // navigate('/story-generator', { state: { profileId } })
+  }
+
+  const handleDeleteProfile = (profileId) => {
+    profileService.deleteProfile(profileId)
+    loadProfiles() // Recharger la liste après suppression
+  }
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -21,17 +46,42 @@ const HomePage = () => {
           <li>Génération de votre histoire personnalisée</li>
         </ol>
 
-        <p className="mb-6 text-gray-600">
-          Chaque histoire est unique et adaptée à vos réponses. Plus vous êtes précis dans 
-          vos réponses, plus l'histoire correspondra à vos attentes.
-        </p>
+        {profiles.length > 0 && (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Vos profils</h3>
+            <div className="space-y-2">
+              {profiles.map(profile => (
+                <ProfileCard 
+                  key={profile.id}
+                  profile={profile}
+                  onSelect={() => handleSelectProfile(profile.id)}
+                  onDelete={() => handleDeleteProfile(profile.id)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="space-y-4">
           <button 
             onClick={() => navigate('/personal-info')}
             className="btn-primary w-full"
           >
-            Commencer l'expérience
+            Création de votre profil
+          </button>
+          
+          <button 
+            onClick={() => navigate('/custom-story')}
+            className="btn-primary w-full"
+          >
+            Histoire à mon goût
+          </button>
+          
+          <button 
+            onClick={() => navigate('/free-fantasy')}
+            className="btn-primary w-full"
+          >
+            Fantasme Libre
           </button>
           
           <div className="relative">

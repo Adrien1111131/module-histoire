@@ -10,6 +10,10 @@ import StoryResult from './components/StoryResult'
 import ProgressBar from './components/ProgressBar'
 import RandomStoryGenerator from './components/RandomStoryGenerator'
 import RandomStoryResult from './components/RandomStoryResult'
+import CustomStoryGenerator from './components/CustomStoryGenerator'
+import CustomStoryResult from './components/CustomStoryResult'
+import FreeFantasyGenerator from './components/FreeFantasyGenerator'
+import FreeFantasyResult from './components/FreeFantasyResult'
 
 function App() {
   const location = useLocation()
@@ -100,6 +104,26 @@ function App() {
           <Route 
             path="/random-story-result" 
             element={<RandomStoryResult randomStoryData={randomStoryData} />} 
+          />
+          
+          {/* Routes pour le générateur personnalisé */}
+          <Route 
+            path="/custom-story" 
+            element={<CustomStoryGenerator />} 
+          />
+          <Route 
+            path="/custom-story-result" 
+            element={<CustomStoryResult />} 
+          />
+          
+          {/* Routes pour le générateur de fantasme libre */}
+          <Route 
+            path="/free-fantasy" 
+            element={<FreeFantasyGenerator />} 
+          />
+          <Route 
+            path="/free-fantasy-result" 
+            element={<FreeFantasyResult />} 
           />
         </Routes>
       </main>

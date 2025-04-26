@@ -105,7 +105,7 @@ const ExcitationQuestionnaire = ({ initialData = {}, onSubmit }) => {
               className="btn-primary"
               disabled={!isComplete}
             >
-              Générer mon histoire
+              Valider
             </button>
           </div>
         </form>
