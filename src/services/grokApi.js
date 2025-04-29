@@ -76,6 +76,49 @@ export const generateStory = async (userProfile) => {
         5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
         6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
         
+        VOCABULAIRE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise un langage direct, cru et explicite
+        2. N'hésite PAS à employer des mots comme "bite", "chatte", "mouiller", "sperme", "baiser", "jouir"
+        3. Adapte l'intensité du vocabulaire à la progression de l'histoire
+        4. Équilibre le vocabulaire explicite avec le contexte sensuel
+        
+        EXEMPLES DE VOCABULAIRE ÉROTIQUE (toujours à la première personne) :
+        - "Je glisse ma bite en toi..."
+        - "Je sens ta chatte mouillée autour de moi..."
+        - "Je veux que tu sentes mon sperme couler en toi..."
+        - "Je te pénètre profondément..."
+        - "Je sens tes seins durcir sous mes doigts..."
+        - "Je te baise plus fort, plus vite..."
+        - "Tu mouilles tellement pour moi..."
+        - "Ta chatte se resserre autour de ma bite..."
+        - "Je sens ton corps trembler de plaisir..."
+        
+        TECHNIQUES D'HYPNOSE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise des truismes (vérités évidentes) pour créer une connexion :
+           - "Tu peux sentir ta respiration..."
+           - "Tu entends ma voix..."
+           - "Ton corps réagit naturellement..."
+        
+        2. Emploie des connecteurs pour lier les sensations :
+           - "Et pendant que tu ressens cela..."
+           - "À mesure que l'excitation monte..."
+           - "Plus tu t'abandonnes, plus tu ressens..."
+        
+        3. Intègre des ratifications (confirmations) :
+           - "C'est ça..."
+           - "Exactement comme ça..."
+           - "Tu le sens déjà..."
+        
+        4. Utilise les trois niveaux de profondeur :
+           - Niveau 1 (Léger) : Suggestions douces, focus sur la respiration
+           - Niveau 2 (Moyen) : Connecteurs plus complexes, suggestions plus directes
+           - Niveau 3 (Profond) : Suggestions intenses, connecteurs imbriqués
+        
+        EXEMPLES DE PHRASES HYPNOTIQUES :
+        - "Tu peux sentir ta respiration s'approfondir... et pendant que tu respires, tu remarques que chaque mot te fait glisser plus profondément..."
+        - "Plus tu écoutes ma voix, plus tu te sens excitée... c'est ça... laisse ces sensations grandir..."
+        - "Tu sens déjà ton corps réagir... et pendant que cette chaleur se répand... tu peux remarquer comme chaque mot intensifie ces sensations... exactement comme ça..."
+        
         DIRECTIVES GÉNÉRALES :
         1. Crée un scénario crédible et réaliste
         2. Décris les actions et sensations simplement et directement
@@ -437,6 +480,49 @@ export const generateRandomStory = async (randomStoryData) => {
         5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
         6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
         
+        VOCABULAIRE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise un langage direct, cru et explicite
+        2. N'hésite PAS à employer des mots comme "bite", "chatte", "mouiller", "sperme", "baiser", "jouir"
+        3. Adapte l'intensité du vocabulaire à la progression de l'histoire
+        4. Équilibre le vocabulaire explicite avec le contexte sensuel
+        
+        EXEMPLES DE VOCABULAIRE ÉROTIQUE (toujours à la première personne) :
+        - "Je glisse ma bite en toi..."
+        - "Je sens ta chatte mouillée autour de moi..."
+        - "Je veux que tu sentes mon sperme couler en toi..."
+        - "Je te pénètre profondément..."
+        - "Je sens tes seins durcir sous mes doigts..."
+        - "Je te baise plus fort, plus vite..."
+        - "Tu mouilles tellement pour moi..."
+        - "Ta chatte se resserre autour de ma bite..."
+        - "Je sens ton corps trembler de plaisir..."
+        
+        TECHNIQUES D'HYPNOSE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise des truismes (vérités évidentes) pour créer une connexion :
+           - "Tu peux sentir ta respiration..."
+           - "Tu entends ma voix..."
+           - "Ton corps réagit naturellement..."
+        
+        2. Emploie des connecteurs pour lier les sensations :
+           - "Et pendant que tu ressens cela..."
+           - "À mesure que l'excitation monte..."
+           - "Plus tu t'abandonnes, plus tu ressens..."
+        
+        3. Intègre des ratifications (confirmations) :
+           - "C'est ça..."
+           - "Exactement comme ça..."
+           - "Tu le sens déjà..."
+        
+        4. Utilise les trois niveaux de profondeur :
+           - Niveau 1 (Léger) : Suggestions douces, focus sur la respiration
+           - Niveau 2 (Moyen) : Connecteurs plus complexes, suggestions plus directes
+           - Niveau 3 (Profond) : Suggestions intenses, connecteurs imbriqués
+        
+        EXEMPLES DE PHRASES HYPNOTIQUES :
+        - "Tu peux sentir ta respiration s'approfondir... et pendant que tu respires, tu remarques que chaque mot te fait glisser plus profondément..."
+        - "Plus tu écoutes ma voix, plus tu te sens excitée... c'est ça... laisse ces sensations grandir..."
+        - "Tu sens déjà ton corps réagir... et pendant que cette chaleur se répand... tu peux remarquer comme chaque mot intensifie ces sensations... exactement comme ça..."
+        
         DIRECTIVES SPÉCIFIQUES :
         1. Intègre toutes les catégories sélectionnées naturellement dans l'histoire
         2. Crée une histoire réaliste et authentique
@@ -685,6 +771,49 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
         5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
         6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
         
+        VOCABULAIRE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise un langage direct, cru et explicite
+        2. N'hésite PAS à employer des mots comme "bite", "chatte", "mouiller", "sperme", "baiser", "jouir"
+        3. Adapte l'intensité du vocabulaire à la progression de l'histoire
+        4. Équilibre le vocabulaire explicite avec le contexte sensuel
+        
+        EXEMPLES DE VOCABULAIRE ÉROTIQUE (toujours à la première personne) :
+        - "Je glisse ma bite en toi..."
+        - "Je sens ta chatte mouillée autour de moi..."
+        - "Je veux que tu sentes mon sperme couler en toi..."
+        - "Je te pénètre profondément..."
+        - "Je sens tes seins durcir sous mes doigts..."
+        - "Je te baise plus fort, plus vite..."
+        - "Tu mouilles tellement pour moi..."
+        - "Ta chatte se resserre autour de ma bite..."
+        - "Je sens ton corps trembler de plaisir..."
+        
+        TECHNIQUES D'HYPNOSE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise des truismes (vérités évidentes) pour créer une connexion :
+           - "Tu peux sentir ta respiration..."
+           - "Tu entends ma voix..."
+           - "Ton corps réagit naturellement..."
+        
+        2. Emploie des connecteurs pour lier les sensations :
+           - "Et pendant que tu ressens cela..."
+           - "À mesure que l'excitation monte..."
+           - "Plus tu t'abandonnes, plus tu ressens..."
+        
+        3. Intègre des ratifications (confirmations) :
+           - "C'est ça..."
+           - "Exactement comme ça..."
+           - "Tu le sens déjà..."
+        
+        4. Utilise les trois niveaux de profondeur :
+           - Niveau 1 (Léger) : Suggestions douces, focus sur la respiration
+           - Niveau 2 (Moyen) : Connecteurs plus complexes, suggestions plus directes
+           - Niveau 3 (Profond) : Suggestions intenses, connecteurs imbriqués
+        
+        EXEMPLES DE PHRASES HYPNOTIQUES :
+        - "Tu peux sentir ta respiration s'approfondir... et pendant que tu respires, tu remarques que chaque mot te fait glisser plus profondément..."
+        - "Plus tu écoutes ma voix, plus tu te sens excitée... c'est ça... laisse ces sensations grandir..."
+        - "Tu sens déjà ton corps réagir... et pendant que cette chaleur se répand... tu peux remarquer comme chaque mot intensifie ces sensations... exactement comme ça..."
+        
         L'histoire doit être authentique et suivre une progression naturelle du désir.`
       }
     ];
@@ -904,6 +1033,49 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
         4. Style direct et intime, comme si le narrateur parlait à l'oreille de l'auditrice
         5. Le narrateur décrit ce qu'il fait/va faire à l'auditrice
         6. Maintiens une connexion intime avec l'auditrice via le dialogue direct
+        
+        VOCABULAIRE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise un langage direct, cru et explicite
+        2. N'hésite PAS à employer des mots comme "bite", "chatte", "mouiller", "sperme", "baiser", "jouir"
+        3. Adapte l'intensité du vocabulaire à la progression de l'histoire
+        4. Équilibre le vocabulaire explicite avec le contexte sensuel
+        
+        EXEMPLES DE VOCABULAIRE ÉROTIQUE (toujours à la première personne) :
+        - "Je glisse ma bite en toi..."
+        - "Je sens ta chatte mouillée autour de moi..."
+        - "Je veux que tu sentes mon sperme couler en toi..."
+        - "Je te pénètre profondément..."
+        - "Je sens tes seins durcir sous mes doigts..."
+        - "Je te baise plus fort, plus vite..."
+        - "Tu mouilles tellement pour moi..."
+        - "Ta chatte se resserre autour de ma bite..."
+        - "Je sens ton corps trembler de plaisir..."
+        
+        TECHNIQUES D'HYPNOSE ÉROTIQUE (TRÈS IMPORTANT) :
+        1. Utilise des truismes (vérités évidentes) pour créer une connexion :
+           - "Tu peux sentir ta respiration..."
+           - "Tu entends ma voix..."
+           - "Ton corps réagit naturellement..."
+        
+        2. Emploie des connecteurs pour lier les sensations :
+           - "Et pendant que tu ressens cela..."
+           - "À mesure que l'excitation monte..."
+           - "Plus tu t'abandonnes, plus tu ressens..."
+        
+        3. Intègre des ratifications (confirmations) :
+           - "C'est ça..."
+           - "Exactement comme ça..."
+           - "Tu le sens déjà..."
+        
+        4. Utilise les trois niveaux de profondeur :
+           - Niveau 1 (Léger) : Suggestions douces, focus sur la respiration
+           - Niveau 2 (Moyen) : Connecteurs plus complexes, suggestions plus directes
+           - Niveau 3 (Profond) : Suggestions intenses, connecteurs imbriqués
+        
+        EXEMPLES DE PHRASES HYPNOTIQUES :
+        - "Tu peux sentir ta respiration s'approfondir... et pendant que tu respires, tu remarques que chaque mot te fait glisser plus profondément..."
+        - "Plus tu écoutes ma voix, plus tu te sens excitée... c'est ça... laisse ces sensations grandir..."
+        - "Tu sens déjà ton corps réagir... et pendant que cette chaleur se répand... tu peux remarquer comme chaque mot intensifie ces sensations... exactement comme ça..."
         
         L'histoire doit être authentique et naturelle, en respectant fidèlement les éléments du fantasme tout en utilisant un langage direct et réaliste.`
       }
