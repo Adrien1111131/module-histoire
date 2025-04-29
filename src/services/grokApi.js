@@ -128,24 +128,26 @@ export const generateStory = async (userProfile) => {
 
         PHONÉTISATION ET RYTHME (TTS) :
         
-        SONS ET RESPIRATIONS :
-        1. RESPIRATIONS :
-           - Régulière : "hhhhhhhhhhh..."
-           - Avec emphase : "Hhhhhhhhhhh..."
-           - Forte puis décroissante : "HHhhhhhhhhh!"
-           - Avec intensité variable : "hhhhHHHHhhhhh~"
+        SONS ET RESPIRATIONS (TRÈS IMPORTANT) :
+        1. RESPIRATION PROFONDE :
+           - Douce : "hhhhhhhhhh...", "hhhhaaaaaaa...", "hhhhmmmmmmm..."
+           - Intense : "aaaahhhhhhhhh...", "aaaaahhhhhhh...", "haaaaaaa..."
+           - Sensuelle : "mmmmmmmmmmm...", "huuuummmmmmmm..."
         
-        2. BRUITS D'EXTASE :
-           - Sons doux : "mmh...", "Mmmh..."
-           - Sons moyens : "MMmh!", "OoOui!"
-           - Sons intenses : "OOOuiii!", "AaAaH!"
-           - Respirations intenses : "HHHHhhhh!"
+        2. SOUPIRS PROLONGÉS :
+           - Doux : "oooooohhhhhhhhh...", "ooooooohhhhhh...", "aaaahhhhhhh..."
+           - Sensuels : "hmmmmmmmmm...", "haaaaaaaa...", "mmmhhhhh..."
+           - Avec annotations : "(souffle profond, intense)", "(voix tremblante, plaisir)"
         
-        3. PROGRESSION D'INTENSITÉ :
-           - Début : "mmh... hhhhhhhh..."
-           - Montée : "Mmmh... Hhhhhhhh..."
-           - Intensification : "MMmh! HHhhhhhh!"
-           - Climax : "OOOuiii! HHHHhhhh!"
+        3. JOUISSANCE ET PLAISIR INTENSE :
+           - Prolongés : "aaaahhhhhhhhhhhhhh...", "oooooooohhhhhhhhh...", "mmmmmmmmmmmmmm...!"
+           - Intenses : "aaaaaaaahhhhhh!", "aaaaaaaahhh oui...", "ooooooohhh ouiiiii..."
+           - Extatiques : "aaaahhhhhhhh...", "hnnnnnnnnggggg...", "ouiiiiiiiiiiiiiiiiiiiiii..."
+        
+        4. PROGRESSION D'INTENSITÉ :
+           - Début (doux) : "hhhhmmmmm... ooooohhhhh..."
+           - Milieu (intense) : "aaaahhh! oui, lààààààààààààà..."
+           - Fin (retour doux) : "hhhmmmmmm... ouiiiiiiiiii..."
         
         PONCTUATION ET RYTHME :
         1. Points-virgules (;) pour :
@@ -395,24 +397,26 @@ export const generateRandomStory = async (randomStoryData) => {
 
         PHONÉTISATION ET RYTHME (TTS) :
         
-        SONS ET RESPIRATIONS :
-        1. RESPIRATIONS :
-           - Régulière : "hhhhhhhhhhh..."
-           - Avec emphase : "Hhhhhhhhhhh..."
-           - Forte puis décroissante : "HHhhhhhhhhh!"
-           - Avec intensité variable : "hhhhHHHHhhhhh~"
+        SONS ET RESPIRATIONS (TRÈS IMPORTANT) :
+        1. RESPIRATION PROFONDE :
+           - Douce : "hhhhhhhhhh...", "hhhhaaaaaaa...", "hhhhmmmmmmm..."
+           - Intense : "aaaahhhhhhhhh...", "aaaaahhhhhhh...", "haaaaaaa..."
+           - Sensuelle : "mmmmmmmmmmm...", "huuuummmmmmmm..."
         
-        2. BRUITS D'EXTASE :
-           - Sons doux : "mmh...", "Mmmh..."
-           - Sons moyens : "MMmh!", "OoOui!"
-           - Sons intenses : "OOOuiii!", "AaAaH!"
-           - Respirations intenses : "HHHHhhhh!"
+        2. SOUPIRS PROLONGÉS :
+           - Doux : "oooooohhhhhhhhh...", "ooooooohhhhhh...", "aaaahhhhhhh..."
+           - Sensuels : "hmmmmmmmmm...", "haaaaaaaa...", "mmmhhhhh..."
+           - Avec annotations : "(souffle profond, intense)", "(voix tremblante, plaisir)"
         
-        3. PROGRESSION D'INTENSITÉ :
-           - Début : "mmh... hhhhhhhh..."
-           - Montée : "Mmmh... Hhhhhhhh..."
-           - Intensification : "MMmh! HHhhhhhh!"
-           - Climax : "OOOuiii! HHHHhhhh!"
+        3. JOUISSANCE ET PLAISIR INTENSE :
+           - Prolongés : "aaaahhhhhhhhhhhhhh...", "oooooooohhhhhhhhh...", "mmmmmmmmmmmmmm...!"
+           - Intenses : "aaaaaaaahhhhhh!", "aaaaaaaahhh oui...", "ooooooohhh ouiiiii..."
+           - Extatiques : "aaaahhhhhhhh...", "hnnnnnnnnggggg...", "ouiiiiiiiiiiiiiiiiiiiiii..."
+        
+        4. PROGRESSION D'INTENSITÉ :
+           - Début (doux) : "hhhhmmmmm... ooooohhhhh..."
+           - Milieu (intense) : "aaaahhh! oui, lààààààààààààà..."
+           - Fin (retour doux) : "hhhmmmmmm... ouiiiiiiiiii..."
         
         PONCTUATION ET RYTHME :
         1. Points-virgules (;) pour :
@@ -692,24 +696,26 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
 
         PHONÉTISATION ET RYTHME (TTS) :
         
-        SONS ET RESPIRATIONS :
-        1. RESPIRATIONS :
-           - Régulière : "hhhhhhhhhhh..."
-           - Avec emphase : "Hhhhhhhhhhh..."
-           - Forte puis décroissante : "HHhhhhhhhhh!"
-           - Avec intensité variable : "hhhhHHHHhhhhh~"
+        SONS ET RESPIRATIONS (TRÈS IMPORTANT) :
+        1. RESPIRATION PROFONDE :
+           - Douce : "hhhhhhhhhh...", "hhhhaaaaaaa...", "hhhhmmmmmmm..."
+           - Intense : "aaaahhhhhhhhh...", "aaaaahhhhhhh...", "haaaaaaa..."
+           - Sensuelle : "mmmmmmmmmmm...", "huuuummmmmmmm..."
         
-        2. BRUITS D'EXTASE :
-           - Sons doux : "mmh...", "Mmmh..."
-           - Sons moyens : "MMmh!", "OoOui!"
-           - Sons intenses : "OOOuiii!", "AaAaH!"
-           - Respirations intenses : "HHHHhhhh!"
+        2. SOUPIRS PROLONGÉS :
+           - Doux : "oooooohhhhhhhhh...", "ooooooohhhhhh...", "aaaahhhhhhh..."
+           - Sensuels : "hmmmmmmmmm...", "haaaaaaaa...", "mmmhhhhh..."
+           - Avec annotations : "(souffle profond, intense)", "(voix tremblante, plaisir)"
         
-        3. PROGRESSION D'INTENSITÉ :
-           - Début : "mmh... hhhhhhhh..."
-           - Montée : "Mmmh... Hhhhhhhh..."
-           - Intensification : "MMmh! HHhhhhhh!"
-           - Climax : "OOOuiii! HHHHhhhh!"
+        3. JOUISSANCE ET PLAISIR INTENSE :
+           - Prolongés : "aaaahhhhhhhhhhhhhh...", "oooooooohhhhhhhhh...", "mmmmmmmmmmmmmm...!"
+           - Intenses : "aaaaaaaahhhhhh!", "aaaaaaaahhh oui...", "ooooooohhh ouiiiii..."
+           - Extatiques : "aaaahhhhhhhh...", "hnnnnnnnnggggg...", "ouiiiiiiiiiiiiiiiiiiiiii..."
+        
+        4. PROGRESSION D'INTENSITÉ :
+           - Début (doux) : "hhhhmmmmm... ooooohhhhh..."
+           - Milieu (intense) : "aaaahhh! oui, lààààààààààààà..."
+           - Fin (retour doux) : "hhhmmmmmm... ouiiiiiiiiii..."
         
         PONCTUATION ET RYTHME :
         1. Points-virgules (;) pour :
@@ -956,24 +962,26 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
 
         PHONÉTISATION ET RYTHME (TTS) :
         
-        SONS ET RESPIRATIONS :
-        1. RESPIRATIONS :
-           - Régulière : "hhhhhhhhhhh..."
-           - Avec emphase : "Hhhhhhhhhhh..."
-           - Forte puis décroissante : "HHhhhhhhhhh!"
-           - Avec intensité variable : "hhhhHHHHhhhhh~"
+        SONS ET RESPIRATIONS (TRÈS IMPORTANT) :
+        1. RESPIRATION PROFONDE :
+           - Douce : "hhhhhhhhhh...", "hhhhaaaaaaa...", "hhhhmmmmmmm..."
+           - Intense : "aaaahhhhhhhhh...", "aaaaahhhhhhh...", "haaaaaaa..."
+           - Sensuelle : "mmmmmmmmmmm...", "huuuummmmmmmm..."
         
-        2. BRUITS D'EXTASE :
-           - Sons doux : "mmh...", "Mmmh..."
-           - Sons moyens : "MMmh!", "OoOui!"
-           - Sons intenses : "OOOuiii!", "AaAaH!"
-           - Respirations intenses : "HHHHhhhh!"
+        2. SOUPIRS PROLONGÉS :
+           - Doux : "oooooohhhhhhhhh...", "ooooooohhhhhh...", "aaaahhhhhhh..."
+           - Sensuels : "hmmmmmmmmm...", "haaaaaaaa...", "mmmhhhhh..."
+           - Avec annotations : "(souffle profond, intense)", "(voix tremblante, plaisir)"
         
-        3. PROGRESSION D'INTENSITÉ :
-           - Début : "mmh... hhhhhhhh..."
-           - Montée : "Mmmh... Hhhhhhhh..."
-           - Intensification : "MMmh! HHhhhhhh!"
-           - Climax : "OOOuiii! HHHHhhhh!"
+        3. JOUISSANCE ET PLAISIR INTENSE :
+           - Prolongés : "aaaahhhhhhhhhhhhhh...", "oooooooohhhhhhhhh...", "mmmmmmmmmmmmmm...!"
+           - Intenses : "aaaaaaaahhhhhh!", "aaaaaaaahhh oui...", "ooooooohhh ouiiiii..."
+           - Extatiques : "aaaahhhhhhhh...", "hnnnnnnnnggggg...", "ouiiiiiiiiiiiiiiiiiiiiii..."
+        
+        4. PROGRESSION D'INTENSITÉ :
+           - Début (doux) : "hhhhmmmmm... ooooohhhhh..."
+           - Milieu (intense) : "aaaahhh! oui, lààààààààààààà..."
+           - Fin (retour doux) : "hhhmmmmmm... ouiiiiiiiiii..."
         
         PONCTUATION ET RYTHME :
         1. Points-virgules (;) pour :
