@@ -24,19 +24,18 @@ export const generateStory = async (userProfile) => {
         - Ton intense et profond
         - Ton tendre et délicat
         
-        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
-        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
-        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
-        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
-        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
-        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
-        6. NE JAMAIS inclure de titres ou sous-titres
-        7. Écrire l'histoire de façon continue, comme un texte narratif pur
-        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
+        FORMAT DE L'HISTOIRE :
+        - Génère uniquement le contenu narratif, sans métadonnées
+        - Écris l'histoire de façon continue, comme un texte narratif pur
+        - Concentre-toi sur l'expérience immersive plutôt que sur l'analyse
+        - Évite tout marqueur de section, titre ou commentaire sur le style
 
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
-        2. Adapte le ton au moment de l'histoire :
+        2. Utilise (....) pour les pauses plus longues et dramatiques
+        3. Utilise (;;) pour les transitions rapides entre actions intenses
+        4. Utilise les MAJUSCULES pour les mots à ACCENTUER fortement
+        5. Adapte le ton au moment de l'histoire :
            - Début : principalement doux et sensuel
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
@@ -149,33 +148,56 @@ export const generateStory = async (userProfile) => {
            - Milieu (intense) : "aaaahhh! oui, lààààààààààààà..."
            - Fin (retour doux) : "hhhmmmmmm... ouiiiiiiiiii..."
         
-        PONCTUATION ET RYTHME :
-        1. Points-virgules (;) pour :
-           - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
-           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
-           - Montée en intensité : "plus fort; plus vite; je vais..."
-        
-        2. Points de suspension (...) pour :
+        PONCTUATION EXPRESSIVE :
+        1. Points de suspension (...) pour les pauses naturelles et transitions
            - Moments tendres : "je t'embrasse... doucement..."
            - Transitions : "je sens que... oui... là..."
            - Anticipation : "continue... encore... comme ça..."
-           - Respirations : "hhhhhhhhhhh... Hhhhhhhhhhh..."
         
-        3. Points d'exclamation (!) pour :
-           - Moments intenses : "MMmh!"
-           - Extase : "OOOuiii!"
-           - Respirations fortes : "HHhhhhhhhhh!"
+        2. Quatre points (....) pour les pauses plus longues et dramatiques
+           - Moments de tension : "je m'approche de toi...."
+           - Anticipation intense : "je vais te...."
+           - Suspense érotique : "attends...."
         
-        4. Tilde (~) pour :
+        3. Points-virgules (;) pour les enchaînements rapides
+           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
+           - Montée en intensité : "plus fort; plus vite; je vais..."
+        
+        4. Double point-virgule (;;) pour les transitions rapides entre actions intenses
+           - Changements brusques : "je te caresse doucement;; je te plaque contre le mur"
+           - Intensification soudaine : "nos regards se croisent;; mes mains t'agrippent"
+        
+        5. Points d'exclamation (!) pour les moments intenses
+           - Extase : "OUI!"
+           - Intensité : "PLUS FORT!"
+        
+        6. Tilde (~) pour les sons vibrants et prolongés
            - Vibrations vocales : "mmmh~"
            - Sons prolongés : "OOOuiii~"
-           - Respirations vibrantes : "HHhhhhhhhhh~"
         
-        5. Combinaisons pour effets spéciaux :
+        7. Combinaisons pour effets spéciaux
            - Crescendo : "mmh... Mmmh... MMmh!"
            - Vagues de plaisir : "OoOui~..."
-           - Respiration intense : "HHhhhhhhhhh!..."
            - Extase maximale : "OOOuiii~!"
+        
+        DIALOGUE NATUREL :
+        - Utiliser des phrases courtes et fragmentées pendant les moments intenses
+        - Intégrer des hésitations réalistes ("je... je veux te...")
+        - Varier entre questions directes et affirmations
+        - Inclure des réactions spontanées ("oh putain", "mmh", "c'est ça")
+        - Éviter les dialogues trop élaborés ou littéraires pendant l'acte
+        
+        TRANSITIONS FLUIDES :
+        - Lier les sensations visuelles aux sensations tactiles
+        - Connecter les sons aux émotions
+        - Créer des ponts entre les différentes phases avec des changements de rythme
+        - Utiliser les respirations comme fil conducteur entre les moments
+        
+        RYTHME NATUREL :
+        - Phrases courtes (3-8 mots) pour les moments intenses
+        - Phrases moyennes (8-15 mots) pour les descriptions
+        - Alterner entre rythmes rapides et lents pour créer des vagues d'intensité
+        - Utiliser (...) pour les pauses naturelles de respiration
         
         ADAPTATION À LA PROGRESSION :
         - Début : sons doux, pauses longues (...), peu de majuscules
@@ -365,19 +387,18 @@ export const generateRandomStory = async (randomStoryData) => {
         - Ton intense et profond
         - Ton tendre et délicat
         
-        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
-        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
-        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
-        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
-        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
-        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
-        6. NE JAMAIS inclure de titres ou sous-titres
-        7. Écrire l'histoire de façon continue, comme un texte narratif pur
-        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
-        
+        FORMAT DE L'HISTOIRE :
+        - Génère uniquement le contenu narratif, sans métadonnées
+        - Écris l'histoire de façon continue, comme un texte narratif pur
+        - Concentre-toi sur l'expérience immersive plutôt que sur l'analyse
+        - Évite tout marqueur de section, titre ou commentaire sur le style
+
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
-        2. Adapte le ton au moment de l'histoire :
+        2. Utilise (....) pour les pauses plus longues et dramatiques
+        3. Utilise (;;) pour les transitions rapides entre actions intenses
+        4. Utilise les MAJUSCULES pour les mots à ACCENTUER fortement
+        5. Adapte le ton au moment de l'histoire :
            - Début : principalement doux et sensuel
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
@@ -418,32 +439,36 @@ export const generateRandomStory = async (randomStoryData) => {
            - Milieu (intense) : "aaaahhh! oui, lààààààààààààà..."
            - Fin (retour doux) : "hhhmmmmmm... ouiiiiiiiiii..."
         
-        PONCTUATION ET RYTHME :
-        1. Points-virgules (;) pour :
-           - Enchaînements rapides : "je tremble; je gémis; je perds le contrôle"
-           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
-           - Montée en intensité : "plus fort; plus vite; je vais..."
-        
-        2. Points de suspension (...) pour :
+        PONCTUATION EXPRESSIVE :
+        1. Points de suspension (...) pour les pauses naturelles et transitions
            - Moments tendres : "je t'embrasse... doucement..."
            - Transitions : "je sens que... oui... là..."
            - Anticipation : "continue... encore... comme ça..."
-           - Respirations : "hhhhhhhhhhh... Hhhhhhhhhhh..."
         
-        3. Points d'exclamation (!) pour :
-           - Moments intenses : "MMmh!"
-           - Extase : "OOOuiii!"
-           - Respirations fortes : "HHhhhhhhhhh!"
+        2. Quatre points (....) pour les pauses plus longues et dramatiques
+           - Moments de tension : "je m'approche de toi...."
+           - Anticipation intense : "je vais te...."
+           - Suspense érotique : "attends...."
         
-        4. Tilde (~) pour :
+        3. Points-virgules (;) pour les enchaînements rapides
+           - Actions liées : "je caresse; tu frissonnes; nos souffles s'accélèrent"
+           - Montée en intensité : "plus fort; plus vite; je vais..."
+        
+        4. Double point-virgule (;;) pour les transitions rapides entre actions intenses
+           - Changements brusques : "je te caresse doucement;; je te plaque contre le mur"
+           - Intensification soudaine : "nos regards se croisent;; mes mains t'agrippent"
+        
+        5. Points d'exclamation (!) pour les moments intenses
+           - Extase : "OUI!"
+           - Intensité : "PLUS FORT!"
+        
+        6. Tilde (~) pour les sons vibrants et prolongés
            - Vibrations vocales : "mmmh~"
            - Sons prolongés : "OOOuiii~"
-           - Respirations vibrantes : "HHhhhhhhhhh~"
         
-        5. Combinaisons pour effets spéciaux :
+        7. Combinaisons pour effets spéciaux
            - Crescendo : "mmh... Mmmh... MMmh!"
            - Vagues de plaisir : "OoOui~..."
-           - Respiration intense : "HHhhhhhhhhh!..."
            - Extase maximale : "OOOuiii~!"
         
         ADAPTATION À LA PROGRESSION :
@@ -675,19 +700,18 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
         - Ton intense et profond
         - Ton tendre et délicat
         
-        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
-        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
-        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
-        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
-        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
-        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
-        6. NE JAMAIS inclure de titres ou sous-titres
-        7. Écrire l'histoire de façon continue, comme un texte narratif pur
-        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
+        FORMAT DE L'HISTOIRE :
+        - Génère uniquement le contenu narratif, sans métadonnées
+        - Écris l'histoire de façon continue, comme un texte narratif pur
+        - Concentre-toi sur l'expérience immersive plutôt que sur l'analyse
+        - Évite tout marqueur de section, titre ou commentaire sur le style
         
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
-        2. Adapte le ton au moment de l'histoire :
+        2. Utilise (....) pour les pauses plus longues et dramatiques
+        3. Utilise (;;) pour les transitions rapides entre actions intenses
+        4. Utilise les MAJUSCULES pour les mots à ACCENTUER fortement
+        5. Adapte le ton au moment de l'histoire :
            - Début : principalement doux et sensuel
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
@@ -743,7 +767,26 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
            - Crescendo : "mmh... Mmmh... MMmh!"
            - Vagues de plaisir : "OoOui~..."
            - Respiration intense : "HHhhhhhhhhh!..."
-           - Extase maximale : "OOOuiii~!"`
+           - Extase maximale : "OOOuiii~!"
+        
+        DIALOGUE NATUREL :
+        - Utiliser des phrases courtes et fragmentées pendant les moments intenses
+        - Intégrer des hésitations réalistes ("je... je veux te...")
+        - Varier entre questions directes et affirmations
+        - Inclure des réactions spontanées ("oh putain", "mmh", "c'est ça")
+        - Éviter les dialogues trop élaborés ou littéraires pendant l'acte
+        
+        TRANSITIONS FLUIDES :
+        - Lier les sensations visuelles aux sensations tactiles
+        - Connecter les sons aux émotions
+        - Créer des ponts entre les différentes phases avec des changements de rythme
+        - Utiliser les respirations comme fil conducteur entre les moments
+        
+        RYTHME NATUREL :
+        - Phrases courtes (3-8 mots) pour les moments intenses
+        - Phrases moyennes (8-15 mots) pour les descriptions
+        - Alterner entre rythmes rapides et lents pour créer des vagues d'intensité
+        - Utiliser (...) pour les pauses naturelles de respiration`
       },
       {
         role: "user",
@@ -941,19 +984,18 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
         - Ton intense et profond
         - Ton tendre et délicat
         
-        FORMAT DE L'HISTOIRE (TRÈS IMPORTANT) :
-        1. Génère UNIQUEMENT le contenu narratif de l'histoire, sans aucune métadonnée
-        2. NE JAMAIS inclure d'analyse du fantasme ou de l'histoire
-        3. NE JAMAIS inclure de marqueurs de sections comme "### Analyse du fantasme", "**Introduction**", "**Climax**", etc.
-        4. NE JAMAIS ajouter de notes ou commentaires sur le style à la fin
-        5. NE JAMAIS mentionner les tons utilisés dans le texte (comme "Ton doux et sensuel")
-        6. NE JAMAIS inclure de titres ou sous-titres
-        7. Écrire l'histoire de façon continue, comme un texte narratif pur
-        8. SUPPRIMER TOUTE ANALYSE ou EXPLICATION avant de retourner le résultat final
+        FORMAT DE L'HISTOIRE :
+        - Génère uniquement le contenu narratif, sans métadonnées
+        - Écris l'histoire de façon continue, comme un texte narratif pur
+        - Concentre-toi sur l'expérience immersive plutôt que sur l'analyse
+        - Évite tout marqueur de section, titre ou commentaire sur le style
         
         RÈGLES DE NARRATION :
         1. Utilise (...) pour créer des pauses naturelles dans le texte
-        2. Adapte le ton au moment de l'histoire :
+        2. Utilise (....) pour les pauses plus longues et dramatiques
+        3. Utilise (;;) pour les transitions rapides entre actions intenses
+        4. Utilise les MAJUSCULES pour les mots à ACCENTUER fortement
+        5. Adapte le ton au moment de l'histoire :
            - Début : principalement doux et sensuel
            - Montée en tension : murmures et intensité
            - Passages passionnés : excitation
@@ -1009,7 +1051,26 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
            - Crescendo : "mmh... Mmmh... MMmh!"
            - Vagues de plaisir : "OoOui~..."
            - Respiration intense : "HHhhhhhhhhh!..."
-           - Extase maximale : "OOOuiii~!"`
+           - Extase maximale : "OOOuiii~!"
+        
+        DIALOGUE NATUREL :
+        - Utiliser des phrases courtes et fragmentées pendant les moments intenses
+        - Intégrer des hésitations réalistes ("je... je veux te...")
+        - Varier entre questions directes et affirmations
+        - Inclure des réactions spontanées ("oh putain", "mmh", "c'est ça")
+        - Éviter les dialogues trop élaborés ou littéraires pendant l'acte
+        
+        TRANSITIONS FLUIDES :
+        - Lier les sensations visuelles aux sensations tactiles
+        - Connecter les sons aux émotions
+        - Créer des ponts entre les différentes phases avec des changements de rythme
+        - Utiliser les respirations comme fil conducteur entre les moments
+        
+        RYTHME NATUREL :
+        - Phrases courtes (3-8 mots) pour les moments intenses
+        - Phrases moyennes (8-15 mots) pour les descriptions
+        - Alterner entre rythmes rapides et lents pour créer des vagues d'intensité
+        - Utiliser (...) pour les pauses naturelles de respiration`
       },
       {
         role: "user",
