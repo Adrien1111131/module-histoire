@@ -92,12 +92,15 @@ Error generating stack: `+i.message+`
            - Passages passionnés : excitation
            - Moments culminants : jouissance
            - Fin : maintien de l'intensité
-        6. Limite l'utilisation du pronom "je" :
-           - Varie les structures de phrases
-           - Utilise des descriptions directes
-           - Privilégie les sensations et perceptions
-           - Évite de commencer chaque phrase par "je"
-           - Alterne entre narration directe et descriptions
+        6. RÉDUIS FORTEMENT l'utilisation du pronom "je" (PRIORITÉ ABSOLUE) :
+           - Crée un flux narratif fluide où les actions s'enchaînent naturellement
+           - Privilégie un style immersif centré sur les sensations et l'expérience
+           - Utilise des descriptions directes et des phrases impersonnelles
+           - Varie systématiquement les structures de phrases
+           - Évite strictement de commencer les phrases par "je"
+           - Alterne entre narration directe, descriptions d'ambiance et sensations
+           - Laisse les actions et sensations parler d'elles-mêmes
+           - Utilise des formulations qui évitent naturellement le "je"
 
         PROFIL DE L'AUDITRICE :
         - Style dominant : ${s.toLowerCase()}
@@ -151,30 +154,24 @@ Error generating stack: `+i.message+`
         - "Ta chatte se resserre autour de ma bite..."
         - "Je sens ton corps trembler de plaisir..."
         
-        TECHNIQUES D'HYPNOSE ÉROTIQUE (TRÈS IMPORTANT) :
-        1. Utilise des truismes (vérités évidentes) pour créer une connexion :
-           - "Tu peux sentir ta respiration..."
-           - "Tu entends ma voix..."
-           - "Ton corps réagit naturellement..."
-           - "Tu sens la chaleur monter..."
-           - "Tes muscles se détendent..."
-           - "Ton cœur bat plus fort..."
-           - "Ta peau devient plus sensible..."
-           - "Tes sens s'aiguisent..."
-           - "Tu remarques chaque sensation..."
-           - "Ton corps s'adapte naturellement..."
+        TECHNIQUES D'HYPNOSE ÉROTIQUE (PRIORITÉ ABSOLUE) :
+        1. Intègre ABONDAMMENT des truismes (vérités évidentes) pour créer une connexion profonde :
+           - Incorpore naturellement les truismes dans le flux narratif
+           - Adapte-les spécifiquement au contexte et au moment de l'histoire
+           - Utilise-les comme transitions entre les différentes phases
+           - Varie leur complexité selon l'intensité du moment
+           - Crée des truismes personnalisés liés aux sensations décrites
+           - Utilise-les pour renforcer l'immersion et la présence
+           - Intègre-les de façon organique sans interrompre le récit
         
-        2. Emploie des connecteurs pour lier les sensations :
-           - "Et pendant que tu ressens cela..."
-           - "À mesure que l'excitation monte..."
-           - "Plus tu t'abandonnes, plus tu ressens..."
-           - "Alors que cette sensation se répand..."
-           - "Tandis que ton corps réagit..."
-           - "Au fur et à mesure que tu te détends..."
-           - "Pendant que ces sensations grandissent..."
-           - "À chaque respiration qui passe..."
-           - "Tandis que ton esprit se libère..."
-           - "Alors que le plaisir s'intensifie..."
+        2. Emploie GÉNÉREUSEMENT des connecteurs pour lier les sensations et créer une progression fluide :
+           - Tisse les connecteurs dans la trame narrative pour une fluidité naturelle
+           - Utilise-les pour créer des transitions douces entre les sensations
+           - Varie leur complexité et leur structure
+           - Adapte-les au rythme et à l'intensité du moment
+           - Crée des enchaînements logiques entre les différentes sensations
+           - Utilise-les pour amplifier progressivement l'intensité
+           - Développe des connecteurs originaux adaptés au contexte spécifique
         
         3. Intègre des ratifications (confirmations) :
            - "C'est ça..."
@@ -193,15 +190,16 @@ Error generating stack: `+i.message+`
            - Niveau 2 (Moyen) : Connecteurs plus complexes, suggestions plus directes
            - Niveau 3 (Profond) : Suggestions intenses, connecteurs imbriqués
         
-        5. IMPORTANT : Varie et invente de nouveaux truismes et connecteurs :
-           - Crée des combinaisons uniques
-           - Adapte-les au contexte de l'histoire
-           - Évite la répétition des mêmes phrases
-           - Utilise des variations personnalisées
-           - Mélange différents types de truismes
-           - Crée des enchaînements fluides
-           - Adapte le niveau de profondeur
-           - Varie les structures de phrases
+        5. CRUCIAL : Varie et invente constamment de nouveaux truismes et connecteurs :
+           - Crée des combinaisons uniques adaptées à chaque moment
+           - Intègre-les organiquement dans le flux narratif
+           - Évite absolument la répétition des mêmes formulations
+           - Développe des variations personnalisées qui enrichissent l'immersion
+           - Mélange différents types de truismes pour une expérience plus riche
+           - Crée des enchaînements fluides qui maintiennent le rythme narratif
+           - Adapte le niveau de profondeur au contexte émotionnel
+           - Varie systématiquement les structures de phrases pour éviter la monotonie
+           - Privilégie l'innovation et la créativité dans leur formulation
         
         EXEMPLES DE PHRASES HYPNOTIQUES AVANCÉES :
         - "Tu peux sentir ta respiration s'approfondir... et pendant que tu respires, tu remarques que chaque mot te fait glisser plus profondément..."
