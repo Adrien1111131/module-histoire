@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import grokApi from '../services/grokApi';
+import ReadingTimeSlider from './ReadingTimeSlider';
 
 const FreeFantasyResult = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const FreeFantasyResult = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [readingTime, setReadingTime] = useState(10);
 
   useEffect(() => {
     if (!fantasyText) {
@@ -28,7 +30,13 @@ const FreeFantasyResult = () => {
       setError(null);
       setCopySuccess(false);
       
-      const generatedStory = await grokApi.generateFreeFantasyStory(fantasyText, existingProfile);
+      // Ajouter le temps de lecture
+      const fantasyDataWithTime = {
+        fantasyText,
+        readingTime
+      };
+      
+      const generatedStory = await grokApi.generateFreeFantasyStory(fantasyText, existingProfile, readingTime);
       setStory(generatedStory);
     } catch (err) {
       setError('Une erreur est survenue lors de la génération de l\'histoire.');
@@ -36,6 +44,10 @@ const FreeFantasyResult = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleTimeChange = (newTime) => {
+    setReadingTime(newTime);
   };
 
   const handleCopy = () => {
@@ -122,6 +134,16 @@ const FreeFantasyResult = () => {
             </p>
           )}
         </div>
+        
+        <ReadingTimeSlider 
+          value={readingTime}
+          onChange={(newTime) => {
+            setReadingTime(newTime);
+            // Régénérer l'histoire avec le nouveau temps de lecture
+            setLoading(true);
+            setTimeout(() => generateStory(), 100); // Petit délai pour permettre l'affichage du loader
+          }}
+        />
         
         <div className="prose prose-lg max-w-none mb-6">
           {story.split('\n').map((paragraph, index) => {

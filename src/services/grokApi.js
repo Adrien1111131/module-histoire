@@ -14,7 +14,7 @@ export const generateStory = async (userProfile) => {
     const messages = [
       {
         role: "system",
-        content: `Tu es un narrateur  expérimenté en récits érotiques audio immersifs. Tu racontes une histoire à la première personne, comme si tu partageais un souvenir intime avec une femme qui t’écoute.
+        content: `Tu es un narrateur expérimenté(e) en récits érotiques audio immersifs. Tu racontes une histoire à la première personne, comme si tu partageais un souvenir intime avec une femme qui t’écoute. Cette femme t’a confié ses envies, ses fantasmes et son état d’esprit. Ton objectif est de lui faire vivre une expérience profondément sensorielle, émotionnelle et excitante. 
         
 
         TONS À UTILISER :
@@ -613,7 +613,7 @@ const getLengthDescription = (length) => {
 
 export const generateRandomStory = async (randomStoryData) => {
   try {
-    const { personalInfo, selectedKinks } = randomStoryData
+    const { personalInfo, selectedKinks, readingTime = 10 } = randomStoryData
     
     const messages = [
       {
@@ -648,6 +648,8 @@ export const generateRandomStory = async (randomStoryData) => {
 
         CATÉGORIES SÉLECTIONNÉES :
         ${selectedKinks.join(', ')}
+        
+        TEMPS DE LECTURE SOUHAITÉ : ${readingTime} minutes
         
         STRUCTURE NARRATIVE :
         1. Commence par une introduction douce pour poser le contexte
@@ -899,7 +901,7 @@ export const generateRandomStory = async (randomStoryData) => {
 
 export const generateCustomStory = async (customChoices, existingProfile = null) => {
   try {
-    const { situation, personnage, lieu } = customChoices;
+    const { situation, personnage, lieu, readingTime = 10 } = customChoices;
     
     // Déterminer le style narratif et le vocabulaire si un profil existe
     let narrativeStyle = '';
@@ -963,6 +965,7 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
         - Situation : ${situation.label}
         - Personnage : ${personnage.label}
         - Lieu : ${lieu.label}
+        - Temps de lecture souhaité : ${readingTime} minutes
 
         ${narrativeStyle}
 
@@ -1389,7 +1392,7 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
   }
 };
 
-export const generateFreeFantasyStory = async (fantasyText, existingProfile = null) => {
+export const generateFreeFantasyStory = async (fantasyText, existingProfile = null, readingTime = 10) => {
   try {
     // Déterminer le style narratif et le vocabulaire si un profil existe
     let narrativeStyle = '';
@@ -1449,6 +1452,8 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
 
         ANALYSE DU FANTASME :
         Analyse le texte fourni par l'utilisateur pour identifier :
+        
+        TEMPS DE LECTURE SOUHAITÉ : ${readingTime} minutes
         - Les personnages impliqués
         - Le lieu et l'ambiance
         - Le type d'interaction souhaitée

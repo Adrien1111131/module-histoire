@@ -1,6 +1,7 @@
- import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import grokApi from '../services/grokApi';
+import ReadingTimeSlider from './ReadingTimeSlider';
 
 const CustomStoryResult = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const CustomStoryResult = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [readingTime, setReadingTime] = useState(10);
 
   useEffect(() => {
     if (!customChoices) {
@@ -28,7 +30,13 @@ const CustomStoryResult = () => {
       setError(null);
       setCopySuccess(false);
       
-      const generatedStory = await grokApi.generateCustomStory(customChoices, existingProfile);
+      // Ajouter le temps de lecture aux données
+      const customChoicesWithTime = {
+        ...customChoices,
+        readingTime
+      };
+      
+      const generatedStory = await grokApi.generateCustomStory(customChoicesWithTime, existingProfile);
       setStory(generatedStory);
     } catch (err) {
       setError('Une erreur est survenue lors de la génération de l\'histoire.');
@@ -36,6 +44,10 @@ const CustomStoryResult = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleTimeChange = (newTime) => {
+    setReadingTime(newTime);
   };
 
   const handleCopy = () => {
@@ -124,6 +136,16 @@ const CustomStoryResult = () => {
             </ul>
           </div>
         )}
+        
+        <ReadingTimeSlider 
+          value={readingTime}
+          onChange={(newTime) => {
+            setReadingTime(newTime);
+            // Régénérer l'histoire avec le nouveau temps de lecture
+            setLoading(true);
+            setTimeout(() => generateStory(), 100); // Petit délai pour permettre l'affichage du loader
+          }}
+        />
         
         <div className="prose prose-lg max-w-none mb-6">
           {story.split('\n').map((paragraph, index) => {
