@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { storyOptions } from '../data/storyOptions';
 import profileService from '../services/profileService';
+import ReadingTimeSlider from './ReadingTimeSlider';
 
 const CustomStoryGenerator = () => {
   const navigate = useNavigate();
   const [selectedSituation, setSelectedSituation] = useState('');
   const [selectedPersonnage, setSelectedPersonnage] = useState('');
   const [selectedLieu, setSelectedLieu] = useState('');
+  const [readingTime, setReadingTime] = useState(10);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +18,8 @@ const CustomStoryGenerator = () => {
       const customChoices = {
         situation: storyOptions.situations.find(s => s.id === selectedSituation),
         personnage: storyOptions.personnages.find(p => p.id === selectedPersonnage),
-        lieu: storyOptions.lieux.find(l => l.id === selectedLieu)
+        lieu: storyOptions.lieux.find(l => l.id === selectedLieu),
+        readingTime
       };
       
       // Récupérer le profil s'il existe
@@ -122,6 +125,17 @@ const CustomStoryGenerator = () => {
                 </label>
               ))}
             </div>
+          </div>
+
+          {/* Question 4 - Temps de lecture */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">
+              4. Combien de temps veux-tu que dure ton histoire ?
+            </h3>
+            <ReadingTimeSlider 
+              value={readingTime}
+              onChange={setReadingTime}
+            />
           </div>
 
           <div className="flex justify-between pt-6">

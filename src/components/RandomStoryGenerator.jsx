@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import KinkSelector from './KinkSelector'
+import ReadingTimeSlider from './ReadingTimeSlider'
 
 const RandomStoryGenerator = ({ onSubmit }) => {
   const navigate = useNavigate()
@@ -9,6 +10,7 @@ const RandomStoryGenerator = ({ onSubmit }) => {
     gender: ''
   })
   const [selectedKinks, setSelectedKinks] = useState([])
+  const [readingTime, setReadingTime] = useState(10)
   const [error, setError] = useState('')
 
   const handlePersonalInfoChange = (e) => {
@@ -41,7 +43,8 @@ const RandomStoryGenerator = ({ onSubmit }) => {
     // Soumettre les données
     const randomStoryData = {
       personalInfo,
-      selectedKinks
+      selectedKinks,
+      readingTime
     }
     
     onSubmit(randomStoryData)
@@ -108,6 +111,18 @@ const RandomStoryGenerator = ({ onSubmit }) => {
             <KinkSelector 
               selectedKinks={selectedKinks} 
               setSelectedKinks={setSelectedKinks} 
+            />
+          </div>
+          
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">Temps de Lecture</h3>
+            <p className="text-gray-600 mb-4">
+              Choisissez la durée de lecture souhaitée pour votre histoire.
+            </p>
+            
+            <ReadingTimeSlider 
+              value={readingTime}
+              onChange={setReadingTime}
             />
           </div>
           

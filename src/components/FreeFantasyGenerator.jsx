@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import profileService from '../services/profileService';
+import ReadingTimeSlider from './ReadingTimeSlider';
 
 const FreeFantasyGenerator = () => {
   const navigate = useNavigate();
   const [fantasyText, setFantasyText] = useState('');
+  const [readingTime, setReadingTime] = useState(10);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -27,11 +29,12 @@ const FreeFantasyGenerator = () => {
     const profiles = profileService.getProfiles();
     const existingProfile = profiles.length > 0 ? profiles[0] : null;
     
-    // Naviguer vers la page de résultat avec le texte du fantasme
+    // Naviguer vers la page de résultat avec le texte du fantasme et le temps de lecture
     navigate('/free-fantasy-result', { 
       state: { 
         fantasyText,
-        existingProfile 
+        existingProfile,
+        readingTime
       } 
     });
   };
@@ -88,6 +91,16 @@ const FreeFantasyGenerator = () => {
               <li>Indiquez si vous préférez être dominante ou soumise</li>
               <li>N'hésitez pas à être spécifique sur vos désirs</li>
             </ul>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-sm font-medium text-gray-700 mb-2">
+              Temps de lecture souhaité
+            </h3>
+            <ReadingTimeSlider 
+              value={readingTime}
+              onChange={setReadingTime}
+            />
           </div>
 
           <div className="flex justify-between pt-4">
