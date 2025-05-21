@@ -3,6 +3,22 @@ const API_URL = 'https://api.x.ai/v1/chat/completions'
 
 import predicats from '../data/predicats'
 
+const N8N_WEBHOOK_URL = 'https://adrien31.app.n8n.cloud/webhook/c6101c94-785c-4eb3-a7e3-f01568125047';
+
+const sendStoryToN8n = async (storyText) => {
+  try {
+    await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ story: storyText }),
+    });
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi au webhook n8n:', error);
+  }
+};
+
 export const generateStory = async (userProfile) => {
   try {
     const { personalInfo, sensoryAnswers, excitationAnswers } = userProfile
@@ -14,7 +30,7 @@ export const generateStory = async (userProfile) => {
     const messages = [
       {
         role: "system",
-        content: `Tu es un narrateur expérimenté(e) en récits érotiques audio immersifs. Tu racontes une histoire à la première personne, comme si tu partageais un souvenir intime avec une femme qui t’écoute. Cette femme t’a confié ses envies, ses fantasmes et son état d’esprit. Ton objectif est de lui faire vivre une expérience profondément sensorielle, émotionnelle et excitante. 
+        content: `Tu es un narrateur expérimenté(e) en récits érotiques audio immersifs. Tu racontes une histoire à la première personne, comme si tu partageais un souvenir intime avec une femme qui t'écoute. Cette femme t'a confié ses envies, ses fantasmes et son état d'esprit. Ton objectif est de lui faire vivre une expérience profondément sensorielle, émotionnelle et excitante. 
         
 
         TONS À UTILISER :
@@ -507,6 +523,9 @@ export const generateStory = async (userProfile) => {
     content = content.replace(/---\n/g, '') // Supprime les séparateurs ---
     content = content.replace(/\n\n\n###.*$/s, '') // Supprime tout ce qui suit un triple saut de ligne suivi de ###
     
+    // Envoi automatique à n8n
+    sendStoryToN8n(content);
+
     return content
   } catch (error) {
     console.error('Erreur API:', error)
@@ -892,6 +911,9 @@ export const generateRandomStory = async (randomStoryData) => {
     content = content.replace(/---\n/g, '') // Supprime les séparateurs ---
     content = content.replace(/\n\n\n###.*$/s, '') // Supprime tout ce qui suit un triple saut de ligne suivi de ###
     
+    // Envoi automatique à n8n
+    sendStoryToN8n(content);
+
     return content
   } catch (error) {
     console.error('Erreur API:', error)
@@ -1385,6 +1407,9 @@ export const generateCustomStory = async (customChoices, existingProfile = null)
     content = content.replace(/---\n/g, ''); // Supprime les séparateurs ---
     content = content.replace(/\n\n\n###.*$/s, ''); // Supprime tout ce qui suit un triple saut de ligne suivi de ###
     
+    // Envoi automatique à n8n
+    sendStoryToN8n(content);
+
     return content;
   } catch (error) {
     console.error('Erreur API:', error);
@@ -1739,6 +1764,9 @@ export const generateFreeFantasyStory = async (fantasyText, existingProfile = nu
     content = content.replace(/---\n/g, ''); // Supprime les séparateurs ---
     content = content.replace(/\n\n\n###.*$/s, ''); // Supprime tout ce qui suit un triple saut de ligne suivi de ###
     
+    // Envoi automatique à n8n
+    sendStoryToN8n(content);
+
     return content;
   } catch (error) {
     console.error('Erreur API:', error);
