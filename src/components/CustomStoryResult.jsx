@@ -11,6 +11,7 @@ const CustomStoryResult = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [n8nSuccess, setN8nSuccess] = useState(false);
 
   useEffect(() => {
     if (!customChoices) {
@@ -188,6 +189,33 @@ const CustomStoryResult = () => {
               )}
             </button>
           </div>
+        </div>
+
+        <div className="mt-4 text-center">
+          <button
+            onClick={() => {
+              fetch('https://adrien31.app.n8n.cloud/webhook-test/c6101c94-785c-4eb3-a7e3-f01568125047', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ story }),
+              })
+              .then(response => response.json())
+              .then(data => {
+                console.log('Success:', data);
+                setN8nSuccess(true);
+                setTimeout(() => setN8nSuccess(false), 2000);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('Erreur lors de l\'envoi à n8n. Veuillez réessayer.');
+              });
+            }}
+            className={`btn-secondary ${n8nSuccess ? 'bg-green-600' : ''}`}
+          >
+            {n8nSuccess ? 'Envoyé à n8n !' : 'Envoyer à n8n'}
+          </button>
         </div>
       </div>
     </div>
