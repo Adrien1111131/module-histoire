@@ -8,7 +8,6 @@ export default defineConfig({
     port: 3000,
     open: true
   },
-  // Ajoutez cette ligne pour le déploiement sur GitHub Pages
-  // Remplacez 'module-histoire' par le nom de votre dépôt GitHub
-  base: '/module-histoire/'
+  // Configuration pour Vercel (commenter la base pour GitHub Pages)
+  // base: '/module-histoire/'
 })

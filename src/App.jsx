@@ -1,63 +1,68 @@
-import React from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { useState, useCallback } from 'react'
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useState, useCallback } from 'react';
 
-import HomePage from './components/HomePage'
-import PersonalInfoForm from './components/PersonalInfoForm'
-import SensoryQuestionnaire from './components/SensoryQuestionnaire'
-import ExcitationQuestionnaire from './components/ExcitationQuestionnaire'
-import StoryResult from './components/StoryResult'
-import ProgressBar from './components/ProgressBar'
-import RandomStoryGenerator from './components/RandomStoryGenerator'
-import RandomStoryResult from './components/RandomStoryResult'
-import CustomStoryGenerator from './components/CustomStoryGenerator'
-import CustomStoryResult from './components/CustomStoryResult'
-import FreeFantasyGenerator from './components/FreeFantasyGenerator'
-import FreeFantasyResult from './components/FreeFantasyResult'
+import WelcomePage from './components/WelcomePage';
+import ExplanationPage from './components/ExplanationPage';
+import SmoothScrollPage from './components/SmoothScrollPage';
+import HomePage from './components/HomePage';
+import PersonalInfoForm from './components/PersonalInfoForm';
+import SensoryQuestionnaire from './components/SensoryQuestionnaire';
+import ExcitationQuestionnaire from './components/ExcitationQuestionnaire';
+import StoryResult from './components/StoryResult';
+import ProgressBar from './components/ProgressBar';
+import RandomStoryGenerator from './components/RandomStoryGenerator';
+import RandomStoryResult from './components/RandomStoryResult';
+import CustomStoryGenerator from './components/CustomStoryGenerator';
+import CustomStoryResult from './components/CustomStoryResult';
+import FreeFantasyGenerator from './components/FreeFantasyGenerator';
+import FreeFantasyResult from './components/FreeFantasyResult';
 
 function App() {
-  const location = useLocation()
+  const location = useLocation();
   const [userProfile, setUserProfile] = useState({
     personalInfo: {},
     sensoryAnswers: {},
     excitationAnswers: {},
-  })
+  });
   
-  const [randomStoryData, setRandomStoryData] = useState(null)
+  const [randomStoryData, setRandomStoryData] = useState(null);
 
   const updatePersonalInfo = useCallback((info) => {
     setUserProfile(prev => ({
       ...prev,
       personalInfo: info
-    }))
-  }, [])
+    }));
+  }, []);
 
   const updateSensoryAnswers = useCallback((answers) => {
     setUserProfile(prev => ({
       ...prev,
       sensoryAnswers: answers
-    }))
-  }, [])
+    }));
+  }, []);
 
   const updateExcitationAnswers = useCallback((answers) => {
     setUserProfile(prev => ({
       ...prev,
       excitationAnswers: answers
-    }))
-  }, [])
+    }));
+  }, []);
+
+  // Déterminer si nous sommes sur la page d'accueil ou la page principale
+  const isWelcomePage = location.pathname === '/';
+  
+  // Déterminer si la page actuelle doit être fixe ou défilable
+  const isHomePage = location.pathname === '/' || location.pathname === '/home';
+  const pageClassName = isHomePage ? "" : "scrollable-page";
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold text-gray-900">Générateur d'Histoires Sensuelles</h1>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        {location.pathname !== '/' && <ProgressBar />}
+    <div className={`min-h-screen w-full ${pageClassName}`}>
+      <main className={`w-full relative z-10 min-h-screen ${isHomePage ? "" : "scrollable-content"}`}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<SmoothScrollPage />} />
+          <Route path="/explanation" element={<ExplanationPage />} />
+          <Route path="/home" element={<HomePage />} />
           
           {/* Routes pour le générateur standard */}
           <Route 

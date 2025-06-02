@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import fondStart from '/fond start.png';
 
 const questions = [
   {
@@ -47,86 +48,118 @@ const questions = [
       { value: 'C', label: 'Une phrase érotique ou une voix' }
     ]
   }
-]
+];
 
 const SensoryQuestionnaire = ({ initialData = {}, onSubmit }) => {
-  const navigate = useNavigate()
-  const [answers, setAnswers] = useState(initialData)
+  const navigate = useNavigate();
+  const [answers, setAnswers] = useState(initialData);
 
   const handleAnswerSelect = (questionId, value) => {
     setAnswers(prev => ({
       ...prev,
       [questionId]: value
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    
-    // Vérifier que toutes les questions ont une réponse
-    if (Object.keys(answers).length === questions.length) {
-      // Envoyer les réponses au composant parent
-      onSubmit(answers)
-      // Naviguer vers la prochaine étape
-      navigate('/excitation-questionnaire')
-    } else {
-      alert('Veuillez répondre à toutes les questions avant de continuer.')
-    }
-  }
+    e.preventDefault();
+    onSubmit(answers);
+    navigate('/excitation-questionnaire');
+  };
 
-  const isComplete = Object.keys(answers).length === questions.length
+  const handleSkip = () => {
+    // Créer des réponses aléatoires pour chaque question
+    const randomAnswers = {};
+    questions.forEach(question => {
+      const options = question.options;
+      const randomIndex = Math.floor(Math.random() * options.length);
+      randomAnswers[question.id] = options[randomIndex].value;
+    });
+    
+    onSubmit(randomAnswers);
+    // Si l'utilisateur passe ce questionnaire, on le redirige directement vers la page d'accueil
+    navigate('/home');
+  };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="question-card">
-        <h2 className="text-2xl font-bold mb-6">Votre profil sensoriel</h2>
-        <p className="text-gray-600 mb-6">
-          Cette partie nous aide à comprendre comment vous percevez et ressentez le plaisir.
-          Choisissez la réponse qui vous correspond le mieux pour chaque question.
-        </p>
+    <div className="flex flex-col items-center min-h-screen">
+      {/* Section d'en-tête avec dégradé - identique à SmoothScrollPage */}
+      <div className="w-full py-4 px-6 flex justify-end" style={{ background: 'linear-gradient(to right, #d5b394 0%, #c0a081 100%)' }}>
+        <span className="font-serif text-xl">
+          <span className="text-white">My</span>
+          <span className="text-red-600">Desire</span>
+          <span className="text-white">.now</span>
+        </span>
+      </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
-          {questions.map((question) => (
-            <div key={question.id} className="space-y-4">
-              <p className="font-medium text-gray-900">{question.text}</p>
-              <div className="space-y-2">
-                {question.options.map((option) => (
-                  <label key={option.value} className="radio-option">
-                    <input
-                      type="radio"
-                      name={`question-${question.id}`}
-                      value={option.value}
-                      checked={answers[question.id] === option.value}
-                      onChange={() => handleAnswerSelect(question.id, option.value)}
-                      className="h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">{option.label}</span>
-                  </label>
-                ))}
-              </div>
+      {/* Conteneur principal avec défilement */}
+      <div className="scroll-container w-full max-w-md mx-auto overflow-y-auto overflow-x-hidden h-[calc(100vh-60px)]">
+        <div className="min-h-[calc(100vh-60px)] flex flex-col items-center px-8 py-10">
+          <div className="text-white relative overflow-hidden">
+            {/* Image de fond sans overlay */}
+            <div className="absolute inset-0 z-0">
+              <img src={fondStart} alt="Fond" className="w-full h-full object-cover" />
             </div>
-          ))}
+            
+            <div className="relative z-10 p-6">
+              <h2 className="text-3xl font-serif text-center mb-4">Profil sensoriel</h2>
+              
+              <p className="text-amber-100 text-sm mb-8">
+                Ce questionnaire nous permet d'adapter la narration de vos histoires à votre style sensoriel préféré 
+                (visuel, auditif ou kinesthésique). Vos réponses amélioreront considérablement la qualité de votre expérience.
+              </p>
 
-          <div className="flex justify-between pt-6">
-            <button
-              type="button"
-              onClick={() => navigate('/personal-info')}
-              className="btn-secondary"
-            >
-              Retour
-            </button>
-            <button
-              type="submit"
-              className="btn-primary"
-              disabled={!isComplete}
-            >
-              Continuer
-            </button>
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {questions.map((question) => (
+                  <div key={question.id} className="space-y-3">
+                    <p className="font-medium text-amber-100">{question.text}</p>
+                    <div className="space-y-2">
+                      {question.options.map((option) => (
+                        <label key={option.value} className="flex items-center space-x-3 p-2 rounded-md hover:bg-amber-200/20 cursor-pointer">
+                          <input
+                            type="radio"
+                            name={`question-${question.id}`}
+                            value={option.value}
+                            checked={answers[question.id] === option.value}
+                            onChange={() => handleAnswerSelect(question.id, option.value)}
+                            className="h-4 w-4 text-amber-500 border-amber-300/50 focus:ring-amber-500"
+                          />
+                          <span className="text-gray-200">{option.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+
+                <div className="flex justify-between pt-6">
+                  <button
+                    type="button"
+                    onClick={() => navigate('/personal-info')}
+                    className="px-4 py-2 bg-amber-800 text-white rounded-md hover:bg-amber-700 transition-colors"
+                  >
+                    Retour
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleSkip}
+                    className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-500 transition-colors"
+                  >
+                    Passer
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-400 transition-colors"
+                  >
+                    Continuer
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SensoryQuestionnaire
+export default SensoryQuestionnaire;

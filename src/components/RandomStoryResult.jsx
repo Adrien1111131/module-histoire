@@ -2,17 +2,44 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import grokApi from '../services/grokApi'
 
-const RandomStoryResult = ({ randomStoryData }) => {
+const RandomStoryResult = ({ randomStoryData: propRandomStoryData }) => {
   const navigate = useNavigate()
   const [story, setStory] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [copySuccess, setCopySuccess] = useState(false)
   const [n8nSuccess, setN8nSuccess] = useState(false)
+  const [randomStoryData, setRandomStoryData] = useState(null)
 
   useEffect(() => {
-    generateStory()
-  }, [])
+    // Récupérer les données de l'histoire aléatoire
+    const storedData = localStorage.getItem('randomStoryData')
+    
+    // Si des données sont passées en props, les utiliser
+    // Sinon, essayer de récupérer les données du localStorage
+    if (propRandomStoryData) {
+      setRandomStoryData(propRandomStoryData)
+    } else if (storedData) {
+      try {
+        const parsedData = JSON.parse(storedData)
+        setRandomStoryData(parsedData)
+        // Nettoyer le localStorage après récupération
+        localStorage.removeItem('randomStoryData')
+      } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error)
+        setError('Erreur lors de la récupération des données de l\'histoire')
+      }
+    } else {
+      setError('Aucune donnée disponible pour générer une histoire')
+    }
+  }, [propRandomStoryData])
+
+  useEffect(() => {
+    // Générer l'histoire une fois que les données sont disponibles
+    if (randomStoryData) {
+      generateStory()
+    }
+  }, [randomStoryData])
 
   const generateStory = async () => {
     try {

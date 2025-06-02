@@ -1,202 +1,198 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import fondStart from '/fond start.png';
+import profileService from '../services/profileService';
 
-const PersonalInfoForm = ({ initialData = {}, onSubmit }) => {
-  const navigate = useNavigate()
+const PersonalInfoForm = ({ onSubmit }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [profileId, setProfileId] = useState(null);
   const [formData, setFormData] = useState({
-    name: initialData.name || '',
-    gender: initialData.gender || '',
-    genderCustom: initialData.genderCustom || '',
-    orientation: initialData.orientation || '',
-    tone: initialData.tone || '',
-    context: initialData.context || '',
-    length: initialData.length || 'medium'
-  })
+    name: '',
+    ageRange: '18 - 25 ans',
+    gender: 'Femme',
+    orientation: 'Bi-sexuelle'
+  });
+
+  // Vérifier si on est en mode édition (paramètre edit dans l'URL)
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const editId = params.get('edit');
+    
+    if (editId) {
+      setIsEditMode(true);
+      setProfileId(editId);
+      
+      // Charger les données du profil à modifier
+      const profileData = profileService.getProfileById(editId);
+      if (profileData) {
+        setFormData({
+          name: profileData.name || '',
+          ageRange: profileData.ageRange || '18 - 25 ans',
+          gender: profileData.gender || 'Femme',
+          orientation: profileData.orientation || 'Bi-sexuelle'
+        });
+      }
+    }
+  }, [location]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    onSubmit(formData)
-    navigate('/sensory-questionnaire')
-  }
+    e.preventDefault();
+    
+    if (isEditMode && profileId) {
+      // Mettre à jour le profil existant
+      profileService.updateProfile(profileId, formData);
+      navigate('/home'); // Retourner à la page d'accueil après modification
+    } else {
+      // Créer un nouveau profil
+      const newProfile = profileService.saveProfile(formData);
+      if (onSubmit) {
+        onSubmit(formData);
+      }
+      navigate('/sensory-questionnaire');
+    }
+  };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="question-card">
-        <h2 className="text-2xl font-bold mb-6">Vos informations personnelles</h2>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-              Votre prénom ou pseudonyme
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="input-field"
-              required
-            />
-          </div>
+    <div className="flex flex-col items-center min-h-screen">
+      {/* Section d'en-tête avec dégradé - identique à SmoothScrollPage */}
+      <div className="w-full py-4 px-6 flex justify-end" style={{ background: 'linear-gradient(to right, #d5b394 0%, #c0a081 100%)' }}>
+        <span className="font-serif text-xl">
+          <span className="text-white">My</span>
+          <span className="text-red-600">Desire</span>
+          <span className="text-white">.now</span>
+        </span>
+      </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Votre genre
-            </label>
-            <div className="space-y-2">
-              {['Homme', 'Femme', 'Non-binaire', 'Autre'].map((option) => (
-                <label key={option} className="radio-option">
+      {/* Conteneur principal avec défilement */}
+      <div className="scroll-container w-full max-w-md mx-auto overflow-y-auto overflow-x-hidden h-[calc(100vh-60px)]">
+        <div className="min-h-[calc(100vh-60px)] flex flex-col items-center px-8 py-10">
+          <div className="text-white relative overflow-hidden">
+            {/* Image de fond sans overlay */}
+            <div className="absolute inset-0 z-0">
+              <img src={fondStart} alt="Fond" className="w-full h-full object-cover" />
+            </div>
+            
+            <div className="relative z-10 p-6">
+              <h2 className="text-3xl font-serif text-center mb-4">
+                {isEditMode ? 'Modifier mon profil' : 'Mon profil'}
+              </h2>
+              
+              <p className="text-amber-100 text-sm mb-8">
+                Vos données sont strictement confidentielles et entièrement protégées : nous les utilisons 
+                uniquement pour vous offrir un service de qualité, en toute sécurité.
+              </p>
+              
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div>
+                  <label htmlFor="name" className="block text-amber-100 mb-2">
+                    Prénom
+                  </label>
                   <input
-                    type="radio"
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Magalie"
+                    className="w-full px-3 py-2 bg-amber-200/30 border border-amber-300/50 rounded-md text-white placeholder-amber-200/70 focus:outline-none focus:ring-2 focus:ring-amber-300"
+                    required
+                  />
+                  <p className="text-xs text-amber-200/70 mt-1">
+                    sera utilisé pour la personnalisation des histoires
+                  </p>
+                </div>
+
+                <div>
+                  <label htmlFor="ageRange" className="block text-amber-100 mb-2">
+                    Tranche d'âge
+                  </label>
+                  <select
+                    id="ageRange"
+                    name="ageRange"
+                    value={formData.ageRange}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 bg-amber-200/30 border border-amber-300/50 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-amber-300 appearance-none"
+                    required
+                  >
+                    <option value="18 - 25 ans">18 - 25 ans</option>
+                    <option value="26 - 35 ans">26 - 35 ans</option>
+                    <option value="36 - 45 ans">36 - 45 ans</option>
+                    <option value="46 - 55 ans">46 - 55 ans</option>
+                    <option value="56 ans et plus">56 ans et plus</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="gender" className="block text-amber-100 mb-2">
+                    Sexe
+                  </label>
+                  <select
+                    id="gender"
                     name="gender"
-                    value={option}
-                    checked={formData.gender === option}
+                    value={formData.gender}
                     onChange={handleInputChange}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <span className="ml-2">{option}</span>
-                </label>
-              ))}
-            </div>
-            {formData.gender === 'Autre' && (
-              <input
-                type="text"
-                name="genderCustom"
-                value={formData.genderCustom}
-                onChange={handleInputChange}
-                placeholder="Précisez votre genre"
-                className="input-field mt-2"
-              />
-            )}
-          </div>
+                    className="w-full px-3 py-2 bg-amber-200/30 border border-amber-300/50 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-amber-300 appearance-none"
+                    required
+                  >
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                    <option value="Non-binaire">Non-binaire</option>
+                    <option value="Autre">Autre</option>
+                  </select>
+                </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Votre orientation sexuelle
-            </label>
-            <div className="space-y-2">
-              {['Hétérosexuel(le)', 'Homosexuel(le)', 'Bisexuel(le)', 'Pansexuel(le)', 'Autre'].map((option) => (
-                <label key={option} className="radio-option">
-                  <input
-                    type="radio"
+                <div>
+                  <label htmlFor="orientation" className="block text-amber-100 mb-2">
+                    Orientation sexuelle
+                  </label>
+                  <select
+                    id="orientation"
                     name="orientation"
-                    value={option}
-                    checked={formData.orientation === option}
+                    value={formData.orientation}
                     onChange={handleInputChange}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <span className="ml-2">{option}</span>
-                </label>
-              ))}
+                    className="w-full px-3 py-2 bg-amber-200/30 border border-amber-300/50 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-amber-300 appearance-none"
+                    required
+                  >
+                    <option value="Hétérosexuel(le)">Hétérosexuel(le)</option>
+                    <option value="Homosexuel(le)">Homosexuel(le)</option>
+                    <option value="Bi-sexuelle">Bi-sexuelle</option>
+                    <option value="Pansexuel(le)">Pansexuel(le)</option>
+                    <option value="Autre">Autre</option>
+                  </select>
+                </div>
+
+                <div className="flex justify-between pt-4">
+                  <button
+                    type="button"
+                    onClick={() => navigate(isEditMode ? '/home' : '/')}
+                    className="px-4 py-2 bg-amber-800 text-white rounded-md hover:bg-amber-700 transition-colors"
+                  >
+                    Retour
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-400 transition-colors"
+                  >
+                    {isEditMode ? 'Enregistrer' : 'Continuer'}
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tonalité souhaitée
-            </label>
-            <div className="space-y-2">
-              {[
-                { value: 'doux', label: 'Doux et tendre' },
-                { value: 'passionne', label: 'Passionné et intense' },
-                { value: 'mysterieux', label: 'Mystérieux et séducteur' },
-                { value: 'dominant', label: 'Dominant et assuré' }
-              ].map((option) => (
-                <label key={option.value} className="radio-option">
-                  <input
-                    type="radio"
-                    name="tone"
-                    value={option.value}
-                    checked={formData.tone === option.value}
-                    onChange={handleInputChange}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <span className="ml-2">{option.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Contexte de l'histoire
-            </label>
-            <div className="space-y-2">
-              {[
-                { value: 'rencontre', label: 'Rencontre fortuite et inattendue' },
-                { value: 'retrouvailles', label: 'Retrouvailles passionnées' },
-                { value: 'fantasme', label: 'Fantasme récurrent qui se réalise' },
-                { value: 'quotidien', label: 'Moment du quotidien qui dérape' }
-              ].map((option) => (
-                <label key={option.value} className="radio-option">
-                  <input
-                    type="radio"
-                    name="context"
-                    value={option.value}
-                    checked={formData.context === option.value}
-                    onChange={handleInputChange}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <span className="ml-2">{option.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Longueur de l'histoire
-            </label>
-            <div className="space-y-2">
-              {[
-                { value: 'short', label: 'Courte (5-10 minutes)' },
-                { value: 'medium', label: 'Moyenne (10-15 minutes)' },
-                { value: 'long', label: 'Longue (15-20 minutes)' }
-              ].map((option) => (
-                <label key={option.value} className="radio-option">
-                  <input
-                    type="radio"
-                    name="length"
-                    value={option.value}
-                    checked={formData.length === option.value}
-                    onChange={handleInputChange}
-                    className="h-4 w-4 text-blue-600"
-                  />
-                  <span className="ml-2">{option.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex justify-between pt-4">
-            <button
-              type="button"
-              onClick={() => navigate('/')}
-              className="btn-secondary"
-            >
-              Retour
-            </button>
-            <button
-              type="submit"
-              className="btn-primary"
-              disabled={!formData.name || !formData.gender || !formData.orientation || !formData.tone || !formData.context || !formData.length}
-            >
-              Continuer
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PersonalInfoForm
+export default PersonalInfoForm;

@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        josefin: ['Josefin Sans', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        quicksand: ['Quicksand', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
+        playfair: ['Playfair Display', 'serif'],
+      },
+    },
   },
   plugins: [],
 }

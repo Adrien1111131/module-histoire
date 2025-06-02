@@ -632,12 +632,53 @@ const getLengthDescription = (length) => {
 
 export const generateRandomStory = async (randomStoryData) => {
   try {
-    const { personalInfo, selectedKinks, readingTime = 10 } = randomStoryData
+    const { personalInfo, selectedKinks, readingTime = 10, eroticismLevel = 2 } = randomStoryData
     
+    // Déterminer le niveau d'érotisme
+    let eroticismInstructions = '';
+    
+    switch (eroticismLevel) {
+      case 1: // Doux
+        eroticismInstructions = `
+        NIVEAU D'ÉROTISME : DOUX
+        - Utilise un langage suggestif plutôt qu'explicite
+        - Privilégie les métaphores et les allusions
+        - Limite l'utilisation de mots crus
+        - Mets l'accent sur les émotions et les sensations
+        - Crée une ambiance romantique et sensuelle
+        - Évite les descriptions trop graphiques
+        `;
+        break;
+      case 2: // Modéré
+        eroticismInstructions = `
+        NIVEAU D'ÉROTISME : MODÉRÉ
+        - Équilibre entre suggestion et explicite
+        - Utilise quelques mots crus mais avec parcimonie
+        - Décris les actes sexuels de manière directe mais élégante
+        - Maintiens un équilibre entre émotion et désir physique
+        - Inclus des descriptions détaillées mais pas excessives
+        `;
+        break;
+      case 3: // Brûlant
+      default:
+        eroticismInstructions = `
+        NIVEAU D'ÉROTISME : BRÛLANT
+        - Utilise un langage très direct et explicite
+        - N'hésite pas à employer abondamment des mots crus et intenses
+        - Décris les actes sexuels de manière très détaillée et graphique
+        - Mets l'accent sur l'intensité physique et le désir brut
+        - Inclus des descriptions très explicites et intenses
+        - Utilise un vocabulaire érotique riche et varié
+        `;
+        break;
+    }
+
     const messages = [
       {
         role: "system",
         content: `Tu es un écrivain spécialisé dans les histoires audio érotiques immersives.
+        
+        ${eroticismInstructions}
 
         TONS À UTILISER :
         - Ton sensuel et séduisant

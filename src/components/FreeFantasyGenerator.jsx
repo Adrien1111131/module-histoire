@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import profileService from '../services/profileService';
 import ReadingTimeSlider from './ReadingTimeSlider';
+import fondStart from '/fond start.png';
 
 const FreeFantasyGenerator = () => {
   const navigate = useNavigate();
@@ -26,8 +27,8 @@ const FreeFantasyGenerator = () => {
     setIsSubmitting(true);
     
     // Récupérer le profil s'il existe
-    const profiles = profileService.getProfiles();
-    const existingProfile = profiles.length > 0 ? profiles[0] : null;
+    const activeProfileId = profileService.getActiveProfile();
+    const existingProfile = activeProfileId ? profileService.getProfileById(activeProfileId) : null;
     
     // Naviguer vers la page de résultat avec le texte du fantasme et le temps de lecture
     navigate('/free-fantasy-result', { 
@@ -55,71 +56,83 @@ const FreeFantasyGenerator = () => {
   const randomPlaceholder = placeholderSuggestions[Math.floor(Math.random() * placeholderSuggestions.length)];
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="question-card">
-        <h2 className="text-2xl font-bold mb-6">Fantasme Libre</h2>
-        <p className="text-gray-600 mb-6">
-          Décrivez librement votre fantasme, vos envies ou une scène qui vous excite. 
-          Notre IA analysera votre texte et créera une histoire sur mesure qui correspond 
-          exactement à ce que vous recherchez.
-        </p>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="fantasy-text" className="block text-sm font-medium text-gray-700 mb-2">
-              Votre fantasme en détail
-            </label>
-            <textarea
-              id="fantasy-text"
-              rows={8}
-              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${error ? 'border-red-500' : 'border-gray-300'}`}
-              placeholder={randomPlaceholder}
-              value={fantasyText}
-              onChange={handleTextChange}
-            ></textarea>
+    <div className="flex flex-col items-center justify-start py-4 bg-amber-700/20">
+      <div className="w-full max-w-md mx-auto border border-blue-400 rounded-lg shadow-lg my-4 scrollable-card">
+        <div className="text-white relative">
+          {/* Image de fond avec overlay pour améliorer la lisibilité */}
+          <div className="absolute inset-0 z-0">
+            <img src={fondStart} alt="Fond" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/30"></div>
+          </div>
+          
+          <div className="relative z-10 p-6">
+            <h2 className="text-3xl font-serif text-center mb-4">Libre</h2>
+            
             {error && (
-              <p className="mt-2 text-sm text-red-600">{error}</p>
+              <div className="bg-red-500/50 border border-red-400 text-white px-4 py-3 rounded mb-6">
+                {error}
+              </div>
             )}
-          </div>
+            
+            <p className="text-amber-100 text-sm mb-6">
+              Transforme ton idée en une histoire érotique immersive en décrivant librement ton fantasme.
+            </p>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-4">
-            <h3 className="text-sm font-medium text-blue-700 mb-2">Suggestions pour vous aider :</h3>
-            <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
-              <li>Décrivez le lieu, l'ambiance et les personnes impliquées</li>
-              <li>Précisez ce qui vous excite particulièrement dans cette situation</li>
-              <li>Mentionnez le niveau d'intensité que vous recherchez</li>
-              <li>Indiquez si vous préférez être dominante ou soumise</li>
-              <li>N'hésitez pas à être spécifique sur vos désirs</li>
-            </ul>
-          </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="fantasy-text" className="block text-amber-200 mb-2">
+                  Ton fantasme en détail
+                </label>
+                <textarea
+                  id="fantasy-text"
+                  rows={8}
+                  className={`w-full p-3 bg-amber-200/30 border rounded-md text-white placeholder-amber-200/70 focus:outline-none focus:ring-2 focus:ring-amber-300 ${error ? 'border-red-400' : 'border-amber-300/50'}`}
+                  placeholder={randomPlaceholder}
+                  value={fantasyText}
+                  onChange={handleTextChange}
+                ></textarea>
+              </div>
 
-          <div className="mb-6">
-            <h3 className="text-sm font-medium text-gray-700 mb-2">
-              Temps de lecture souhaité
-            </h3>
-            <ReadingTimeSlider 
-              value={readingTime}
-              onChange={setReadingTime}
-            />
-          </div>
+              <div className="bg-amber-800/50 border border-amber-700/50 rounded-md p-4">
+                <h3 className="text-sm font-medium text-amber-200 mb-2">Suggestions pour t'aider :</h3>
+                <ul className="list-disc list-inside text-amber-100 space-y-1 text-sm">
+                  <li>Décris le lieu, l'ambiance et les personnes impliquées</li>
+                  <li>Précise ce qui t'excite particulièrement dans cette situation</li>
+                  <li>Mentionne le niveau d'intensité que tu recherches</li>
+                  <li>Indique si tu préfères être dominant(e) ou soumis(e)</li>
+                  <li>N'hésite pas à être spécifique sur tes désirs</li>
+                </ul>
+              </div>
 
-          <div className="flex justify-between pt-4">
-            <button
-              type="button"
-              onClick={() => navigate('/')}
-              className="btn-secondary"
-            >
-              Retour
-            </button>
-            <button
-              type="submit"
-              className="btn-primary"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Génération en cours...' : 'Générer mon histoire'}
-            </button>
+              <div>
+                <h3 className="text-xl font-medium text-amber-200 mb-3">
+                  Temps de lecture souhaité
+                </h3>
+                <ReadingTimeSlider 
+                  value={readingTime}
+                  onChange={setReadingTime}
+                />
+              </div>
+
+              <div className="flex justify-between pt-4">
+                <button
+                  type="button"
+                  onClick={() => navigate('/home')}
+                  className="px-4 py-2 bg-amber-800 text-white rounded-md hover:bg-amber-700 transition-colors"
+                >
+                  Retour
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-400 transition-colors"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Génération...' : 'Écrire'}
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
