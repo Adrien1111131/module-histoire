@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import grokApi from '../services/grokApi';
+import { VOCAL_MODULE_URL } from '../config/appConfig';
 
 const FreeFantasyResult = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { fantasyText, existingProfile } = location.state || {};
+  // Utiliser des valeurs par défaut pour éviter les erreurs undefined
+  const { fantasyText = '', existingProfile = null, eroticismLevel = 2 } = location.state || {};
   
   const [story, setStory] = useState('');
   const [loading, setLoading] = useState(true);
@@ -31,7 +33,25 @@ const FreeFantasyResult = () => {
       // Récupérer le temps de lecture s'il existe dans l'état
       const readingTime = location.state?.readingTime || 10; 
       
-      const generatedStory = await grokApi.generateFreeFantasyStory(fantasyText, existingProfile, readingTime);
+      // Vérifier que le texte du fantasme n'est pas vide
+      if (!fantasyText || fantasyText.trim() === '') {
+        setError('Le texte du fantasme est vide. Veuillez retourner à la saisie.');
+        setLoading(false);
+        return;
+      }
+      
+      // Créer un profil sécurisé si existingProfile est fourni
+      const safeProfile = existingProfile ? {
+        name: existingProfile.name || 'Utilisateur',
+        gender: existingProfile.gender || 'femme',
+        orientation: existingProfile.orientation || 'hétérosexuelle',
+        dominantStyle: existingProfile.dominantStyle || 'VISUEL',
+        excitationType: existingProfile.excitationType || 'ÉMOTIONNEL',
+        tone: existingProfile.tone || 'doux',
+        length: existingProfile.length || 'medium'
+      } : null;
+      
+      const generatedStory = await grokApi.generateFreeFantasyStory(fantasyText, safeProfile, readingTime, eroticismLevel);
       setStory(generatedStory);
     } catch (err) {
       setError('Une erreur est survenue lors de la génération de l\'histoire.');
@@ -114,6 +134,37 @@ const FreeFantasyResult = () => {
       <div className="question-card">
         <h2 className="text-2xl font-bold mb-6">Votre fantasme personnalisé</h2>
         
+        <div className="flex justify-between items-center mb-4">
+          <button
+            onClick={() => navigate('/free-fantasy')}
+            className="btn-secondary"
+          >
+            Nouveau fantasme
+          </button>
+          
+          <button
+            onClick={async () => {
+              try {
+                // Copier le texte dans le presse-papiers
+                await navigator.clipboard.writeText(story);
+                
+                // Afficher un feedback visuel temporaire
+                setCopySuccess(true);
+                setTimeout(() => setCopySuccess(false), 1000);
+                
+                // Rediriger vers le module vocal dans le même onglet
+                window.location.href = VOCAL_MODULE_URL;
+              } catch (err) {
+                console.error('Erreur lors de la copie:', err);
+                alert('Impossible de copier l\'histoire. Veuillez réessayer.');
+              }
+            }}
+            className="btn-primary flex items-center justify-center"
+          >
+            <span role="img" aria-label="headphones" className="mr-2">🎧</span> Générer l'audio
+          </button>
+        </div>
+        
         <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
           <h3 className="text-sm font-medium text-blue-700 mb-2">Votre fantasme :</h3>
           <p className="text-blue-700 text-sm italic">
@@ -146,12 +197,6 @@ const FreeFantasyResult = () => {
         </div>
 
         <div className="flex justify-between pt-6">
-          <button
-            onClick={() => navigate('/free-fantasy')}
-            className="btn-secondary"
-          >
-            Nouveau fantasme
-          </button>
           <div className="space-x-4">
             <button
               onClick={generateStory}
@@ -172,21 +217,6 @@ const FreeFantasyResult = () => {
               )}
             </button>
           </div>
-        </div>
-
-        <div className="mt-4 text-center">
-          <button
-            onClick={() => {
-              // Stocker le texte dans sessionStorage
-              sessionStorage.setItem('storyText', story);
-              
-              // Rediriger vers le module vocal
-              window.location.href = 'https://modulvocal7.vercel.app/';
-            }}
-            className="btn-primary flex items-center justify-center mx-auto"
-          >
-            <span role="img" aria-label="headphones" className="mr-2">🎧</span> Écouter l'histoire
-          </button>
         </div>
       </div>
     </div>

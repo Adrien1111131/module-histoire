@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import grokApi from '../services/grokApi';
+import storyService from '../services/storyServiceWrapper';
+import { VOCAL_MODULE_URL } from '../config/appConfig';
 
 const CustomStoryResult = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { customChoices, existingProfile } = location.state || {};
+  // Utiliser un objet vide par défaut pour éviter les erreurs undefined
+  const { customChoices = {}, existingProfile = null } = location.state || {};
   
   const [story, setStory] = useState('');
   const [loading, setLoading] = useState(true);
@@ -13,11 +15,22 @@ const CustomStoryResult = () => {
   const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
-    if (!customChoices) {
-      setError('Aucune sélection trouvée. Veuillez retourner à la sélection.');
+    // Vérifier si customChoices est valide et contient les propriétés nécessaires
+    if (!customChoices || !customChoices.situation || !customChoices.personnage || !customChoices.lieu) {
+      console.error('CustomStoryResult - Données invalides:', { customChoices, existingProfile });
+      setError('Aucune sélection trouvée ou données incomplètes. Veuillez retourner à la sélection.');
       setLoading(false);
       return;
     }
+    
+    console.log('CustomStoryResult - Données reçues:', { 
+      situation: customChoices.situation,
+      personnage: customChoices.personnage,
+      lieu: customChoices.lieu,
+      readingTime: customChoices.readingTime,
+      eroticismLevel: customChoices.eroticismLevel,
+      existingProfile
+    });
     
     generateStory();
   }, []);
@@ -28,11 +41,20 @@ const CustomStoryResult = () => {
       setError(null);
       setCopySuccess(false);
       
-      const generatedStory = await grokApi.generateCustomStory(customChoices, existingProfile);
+      console.log('CustomStoryResult - Appel API avec:', { 
+        situation: customChoices.situation,
+        personnage: customChoices.personnage,
+        lieu: customChoices.lieu,
+        readingTime: customChoices.readingTime,
+        eroticismLevel: customChoices.eroticismLevel
+      });
+      
+      const generatedStory = await storyService.generateCustomStory(customChoices, existingProfile);
+      console.log('CustomStoryResult - Histoire générée avec succès');
       setStory(generatedStory);
     } catch (err) {
-      setError('Une erreur est survenue lors de la génération de l\'histoire.');
-      console.error('Erreur de génération:', err);
+      console.error('Erreur détaillée de génération:', err);
+      setError(`Une erreur est survenue lors de la génération de l'histoire: ${err.message}`);
     } finally {
       setLoading(false);
     }
@@ -111,13 +133,44 @@ const CustomStoryResult = () => {
       <div className="question-card">
         <h2 className="text-2xl font-bold mb-6">Votre histoire personnalisée</h2>
         
+        <div className="flex justify-between items-center mb-4">
+          <button
+            onClick={() => navigate('/custom-story')}
+            className="btn-secondary"
+          >
+            Nouvelle histoire
+          </button>
+          
+          <button
+            onClick={async () => {
+              try {
+                // Copier le texte dans le presse-papiers
+                await navigator.clipboard.writeText(story);
+                
+                // Afficher un feedback visuel temporaire
+                setCopySuccess(true);
+                setTimeout(() => setCopySuccess(false), 1000);
+                
+                // Rediriger vers le module vocal dans le même onglet
+                window.location.href = VOCAL_MODULE_URL;
+              } catch (err) {
+                console.error('Erreur lors de la copie:', err);
+                alert('Impossible de copier l\'histoire. Veuillez réessayer.');
+              }
+            }}
+            className="btn-primary flex items-center justify-center"
+          >
+            <span role="img" aria-label="headphones" className="mr-2">🎧</span> Générer l'audio
+          </button>
+        </div>
+        
         {customChoices && (
           <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
             <h3 className="text-sm font-medium text-blue-700 mb-2">Vos choix :</h3>
             <ul className="list-disc list-inside text-blue-700 space-y-1">
-              <li>Situation : {customChoices.situation.label}</li>
-              <li>Personnage : {customChoices.personnage.label}</li>
-              <li>Lieu : {customChoices.lieu.label}</li>
+              <li>Situation : {customChoices.situation?.label || 'Non spécifiée'}</li>
+              <li>Personnage : {customChoices.personnage?.label || 'Non spécifié'}</li>
+              <li>Lieu : {customChoices.lieu?.label || 'Non spécifié'}</li>
               {existingProfile && (
                 <li>Style narratif : {existingProfile.dominantStyle}</li>
               )}
@@ -162,12 +215,6 @@ const CustomStoryResult = () => {
         </div>
 
         <div className="flex justify-between pt-6">
-          <button
-            onClick={() => navigate('/custom-story')}
-            className="btn-secondary"
-          >
-            Nouvelle histoire
-          </button>
           <div className="space-x-4">
             <button
               onClick={generateStory}
@@ -188,21 +235,6 @@ const CustomStoryResult = () => {
               )}
             </button>
           </div>
-        </div>
-
-        <div className="mt-4 text-center">
-          <button
-            onClick={() => {
-              // Stocker le texte dans sessionStorage
-              sessionStorage.setItem('storyText', story);
-              
-              // Rediriger vers le module vocal
-              window.location.href = 'https://modulvocal7.vercel.app/';
-            }}
-            className="btn-primary flex items-center justify-center mx-auto"
-          >
-            <span role="img" aria-label="headphones" className="mr-2">🎧</span> Écouter l'histoire
-          </button>
         </div>
       </div>
     </div>

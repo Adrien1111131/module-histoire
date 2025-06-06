@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import grokApi from '../services/grokApi'
+import { VOCAL_MODULE_URL } from '../config/appConfig'
 
 const RandomStoryResult = ({ randomStoryData: propRandomStoryData }) => {
   const navigate = useNavigate()
@@ -21,9 +22,14 @@ const RandomStoryResult = ({ randomStoryData: propRandomStoryData }) => {
     } else if (storedData) {
       try {
         const parsedData = JSON.parse(storedData)
-        setRandomStoryData(parsedData)
-        // Nettoyer le localStorage après récupération
-        localStorage.removeItem('randomStoryData')
+        // Vérifier que les données sont valides
+        if (parsedData && typeof parsedData === 'object') {
+          setRandomStoryData(parsedData)
+          // Nettoyer le localStorage après récupération
+          localStorage.removeItem('randomStoryData')
+        } else {
+          throw new Error('Données invalides')
+        }
       } catch (error) {
         console.error('Erreur lors de la récupération des données:', error)
         setError('Erreur lors de la récupération des données de l\'histoire')
@@ -52,7 +58,22 @@ const RandomStoryResult = ({ randomStoryData: propRandomStoryData }) => {
         return
       }
       
-      const generatedStory = await grokApi.generateRandomStory(randomStoryData)
+      // S'assurer que toutes les propriétés nécessaires existent
+      const safeRandomStoryData = {
+        personalInfo: {
+          name: randomStoryData.personalInfo.name || 'Utilisateur',
+          gender: randomStoryData.personalInfo.gender || 'femme',
+          orientation: randomStoryData.personalInfo.orientation || 'hétérosexuelle'
+        },
+        selectedKinks: Array.isArray(randomStoryData.selectedKinks) ? 
+          randomStoryData.selectedKinks : ['Romance', 'Passion'],
+        readingTime: randomStoryData.readingTime || 10,
+        eroticismLevel: randomStoryData.eroticismLevel || 2,
+        dominantStyle: randomStoryData.dominantStyle || 'VISUEL',
+        excitationType: randomStoryData.excitationType || 'ÉMOTIONNEL'
+      }
+      
+      const generatedStory = await grokApi.generateRandomStory(safeRandomStoryData)
       setStory(generatedStory)
     } catch (err) {
       setError('Une erreur est survenue lors de la génération de l\'histoire.')
@@ -135,6 +156,37 @@ const RandomStoryResult = ({ randomStoryData: propRandomStoryData }) => {
       <div className="question-card">
         <h2 className="text-2xl font-bold mb-6">Votre histoire personnalisée</h2>
         
+        <div className="flex justify-between items-center mb-4">
+          <button
+            onClick={() => navigate('/random-story-generator')}
+            className="btn-secondary"
+          >
+            Nouvelle histoire aléatoire
+          </button>
+          
+          <button
+            onClick={async () => {
+              try {
+                // Copier le texte dans le presse-papiers
+                await navigator.clipboard.writeText(story);
+                
+                // Afficher un feedback visuel temporaire
+                setCopySuccess(true);
+                setTimeout(() => setCopySuccess(false), 1000);
+                
+                // Rediriger vers le module vocal dans le même onglet
+                window.location.href = VOCAL_MODULE_URL;
+              } catch (err) {
+                console.error('Erreur lors de la copie:', err);
+                alert('Impossible de copier l\'histoire. Veuillez réessayer.');
+              }
+            }}
+            className="btn-primary flex items-center justify-center"
+          >
+            <span role="img" aria-label="headphones" className="mr-2">🎧</span> Générer l'audio
+          </button>
+        </div>
+        
         <div className="prose prose-lg max-w-none mb-6">
           {story.split('\n').map((paragraph, index) => {
             // Mettre en évidence les pauses
@@ -172,12 +224,6 @@ const RandomStoryResult = ({ randomStoryData: propRandomStoryData }) => {
         </div>
 
         <div className="flex justify-between pt-6">
-          <button
-            onClick={() => navigate('/random-story-generator')}
-            className="btn-secondary"
-          >
-            Nouvelle histoire aléatoire
-          </button>
           <div className="space-x-4">
             <button
               onClick={generateStory}
@@ -198,21 +244,6 @@ const RandomStoryResult = ({ randomStoryData: propRandomStoryData }) => {
               )}
             </button>
           </div>
-        </div>
-
-        <div className="mt-4 text-center">
-          <button
-            onClick={() => {
-              // Stocker le texte dans sessionStorage
-              sessionStorage.setItem('storyText', story);
-              
-              // Rediriger vers le module vocal
-              window.location.href = 'https://modulvocal7.vercel.app/';
-            }}
-            className="btn-primary flex items-center justify-center mx-auto"
-          >
-            <span role="img" aria-label="headphones" className="mr-2">🎧</span> Écouter l'histoire
-          </button>
         </div>
       </div>
     </div>
